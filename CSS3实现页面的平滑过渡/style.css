@@ -1,0 +1,404 @@
+@charset "UTF-8";
+@font-face {font-family: 'iconfont';
+    src: url('font/iconfont.eot'); /* IE9*/
+    src: url('font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('font/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('font/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+    font-weight: normal;  /*设置字体宽度和字体样式*/
+    font-style:normal;
+}
+body{
+	font-family:Georia,serif;
+	background:#ddd;
+	font-weight:400;
+	font-size:15px;
+	color:#333;
+	overflow:hidden;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
+a{
+	text-decoration:none;
+	color:#555;;
+}
+.clr{ /*清除浮动*/
+	width:0;
+	height:0;
+	overflow:hidden;
+	clear:both;
+	padding:0;
+	margin:0;
+}
+.st-container{
+	width:100%;
+	height:100%;
+	position:absolute;
+	left:0;
+	top:0;
+	font-family: "Josefin Slab","Myriad Pro",Arial,sans-serif;
+}
+.st-container > input,
+.st-container > a{
+	width:20%;
+	height:34px;
+	line-height: 34px;
+	position:fixed;
+	bottom:0;
+
+}
+.st-container > input{
+	opacity:0;
+	z-index:1000;
+	cursor:pointer;
+}
+.st-container > a {
+	z-index:10;
+	font-weight:700;
+	font-size:16px;
+	background:#b032da;
+	text-align:center;
+	color:#fff;
+	text-shadow:1px 1px 1px rgba(151,24,64,0.2);
+}
+#st-control-1,#st-control-1+a{
+	left:0%;
+}
+#st-control-2,#st-control-2+a{
+	left:20%;
+}
+#st-control-3,#st-control-3+a{
+	left:40%;
+}
+#st-control-4,#st-control-4+a{
+	left:60%;
+}
+#st-control-5,#st-control-5+a{
+	left:80%;
+}
+.st-container input:checked+a,
+.st-container input:checked:hover+a{
+	background:#792c92;/*使当前选择的input后面的a显示深紫色，并且当鼠标移过的时候不会改变颜色*/
+}
+.st-container input:checked+a:after{/*在当前选择的input后面的a下添加小三角形*/
+	content:"";
+	width:0;
+	height:0;
+	overflow: hidden;
+	border:20px solid transparent;
+	border-bottom-color:#792c92;
+	position:absolute;
+	bottom:100%;
+	left:50%;/*居中*/
+	margin-left:-20px;
+}
+.st-container input:hover + a{
+	background:#cc69ed;/*底部达到hover变成淡紫红色的效果*/
+}
+
+.st-scroll,
+.st-panel{
+	width:100%;
+	height:100%;
+	position: relative;
+}
+.st-scroll{
+	left:0;
+	top:0;
+	-webkit-transform: translate3d(0,0,0);
+	-ms-transform: translate3d(0,0,0);
+	-o-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+	-webkit-backface-visibility:hidden;
+	-webkit-transition: all 0.6s ease-in-out;
+	-o-transition: all 0.6s ease-in-out;
+	transition: all 0.6s ease-in-out;
+}
+.st-panel{
+	background:#fff;
+	overflow: hidden;
+}
+#st-control-1:checked ~ .st-scroll{
+	-webkit-transform: translateY(0%);
+	-ms-transform: translateY(0%);
+	-o-transform: translateY(0%);
+	transform: translateY(0%);/*火狐已经实现transform这个属性，所以没有前缀了*/
+}
+#st-control-2:checked ~ .st-scroll{
+	-webkit-transform: translateY(-100%);
+	-ms-transform: translateY(-100%);
+	-o-transform: translateY(-100%);
+	transform: translateY(-100%);
+}
+#st-control-3:checked ~ .st-scroll{
+	-webkit-transform: translateY(-200%);
+	-ms-transform: translateY(-200%);
+	-o-transform: translateY(-200%);
+	transform: translateY(-200%);
+}
+#st-control-4:checked ~ .st-scroll{
+	-webkit-transform: translateY(-300%);
+	-ms-transform: translateY(-300%);
+	-o-transform: translateY(-300%);
+	transform: translateY(-300%);
+}
+#st-control-5:checked ~ .st-scroll{
+	-webkit-transform: translateY(-400%);
+	-ms-transform: translateY(-400%);
+	-o-transform: translateY(-400%);
+	transform: translateY(-400%);
+}
+.st-desc{
+	width:200px;
+	height:200px;
+	background:#8c3da6;
+	position: absolute;
+	left:50%;
+	top:0;
+	margin-left:-100px;
+	-webkit-transform: translateY(-50%) rotate(45deg);
+	-ms-transform: translateY(-50%) rotate(45deg);
+	-o-transform: translateY(-50%) rotate(45deg);
+	transform: translateY(-50%) rotate(45deg);
+}
+[data-icon]:after{
+	content:attr(data-icon); /*内容为data-icon属性的值*/
+	width:200px;
+	height:200px;
+	color:#fff;
+	font-size:90px;/*字体图标的大小*/
+	text-align: center;
+	line-height: 200px;
+	position: absolute;
+	left:50%;
+	top:50%;
+	margin:-100px 0 0 -100px;
+	-webkit-transform: rotate(-45deg) translateY(25%);
+	-ms-transform: rotate(-45deg) translateY(25%);
+	-o-transform: rotate(-45deg) translateY(25%);
+	transform: rotate(-45deg) translateY(25%);
+
+	font-family:"iconfont" !important; /*覆盖原来设置的字体*/
+    font-size:50px; /*字体大小*/
+    font-style:normal; 
+    -webkit-font-smoothing: antialiased; /*字体平滑*/
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    text-shadow:3px 3px 1px rgba(151,24,64,0.2);
+}
+.st-panel h2{
+	color:#b032da;
+	font-size:54px;
+	line-height: 50px;
+	text-align: center;
+	font-weight: 900;
+	width:80%;  /*宽度设置为100%,left0%也可以居中*/
+	position: absolute;
+	left:10%;
+	top:50%;
+	margin-top:-70px;
+	text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
+	-webkit-backface-visibility:hidden; /*?什么用*/
+}
+#st-control-1:checked ~ .st-scroll #st-panel-1 h2,
+#st-control-2:checked ~ .st-scroll #st-panel-2 h2,
+#st-control-3:checked ~ .st-scroll #st-panel-3 h2,
+#st-control-4:checked ~ .st-scroll #st-panel-4 h2,
+#st-control-5:checked ~ .st-scroll #st-panel-5 h2{/*bakcwards表示动画默认开始执行，但是0.2S设置了延迟播放时间*/
+	-webkit-animation:moveDown 0.6s ease-in-out 0.2s backwards;
+	-moz-animation:moveDown 0.6s ease-in-out 0.2s backwards;
+	-ms-animation:moveDown 0.6s ease-in-out 0.2s backwards;
+	-o-animation:moveDown 0.6s ease-in-out 0.2s backwards;
+	animation:moveDown 0.6s ease-in-out 0.2s backwards;
+}
+@-webkit-keyframes moveDown{ /*关键帧*/
+	0%{
+		-webkit-transform:translateY(-40px);
+		transform: translateY(-40px);
+		opacity:0; 
+	}
+	100%{
+		-webkit-transform:translateY(0px);
+		transform:translateY(0px);
+		opacity:1;
+	}
+}
+@-moz-keyframes moveDown{ /*关键帧*/
+	0%{
+		-moz-transform:translateY(-40px);
+		transform: translateY(-40px);
+		opacity:0; 
+	}
+	100%{
+		-moz-transform:translateY(0px);
+		transform:translateY(0px);
+		opacity:1;
+	}
+}
+@-ms-keyframes moveDown{ /*关键帧*/
+	0%{
+		-ms-transform:translateY(-40px);
+		transform:translateY(-40px);
+		opacity:0; 
+	}
+	100%{
+		-ms-transform:translateY(0px);
+		transform:translateY(0px);
+		opacity:1;
+	}
+}
+@-o-keyframes moveDown{ /*关键帧*/
+	0%{
+		-o-transform:translateY(-40px);
+		transform:translateY(-40px);
+		opacity:0; 
+	}
+	100%{
+		-o-transform:translateY(0px);
+		transform:translateY(0px);
+		opacity:1;
+	}
+}
+@keyframes moveDown{ /*关键帧*/
+	0%{
+		transform:translateY(-40px);
+		opacity:0; 
+	}
+	100%{
+		transform:translateY(0px);
+		opacity:1;
+	}
+}
+.st-panel p{
+	position: absolute;
+	width:50%;
+	left:25%;
+	top:50%;
+	font-size:16px;
+	line-height: 22px;
+	padding:0;
+	text-align: center;
+	backface-visibility:hidden;
+	color:#8b8b8b;
+	margin-top:10px;
+}
+#st-control-1:checked ~ .st-scroll #st-panel-1 p,
+#st-control-2:checked ~ .st-scroll #st-panel-2 p,
+#st-control-3:checked ~ .st-scroll #st-panel-3 p,
+#st-control-4:checked ~ .st-scroll #st-panel-4 p,
+#st-control-5:checked ~ .st-scroll #st-panel-5 p{/*bakcwards表示动画默认开始执行，但是0.2S设置了延迟播放时间*/
+	-webkit-animation:moveUp 0.6s ease-in-out 0.2s backwards;
+	-moz-animation:moveUp 0.6s ease-in-out 0.2s backwards;
+	-ms-animation:moveUp 0.6s ease-in-out 0.2s backwards;
+	-o-animation:moveUp 0.6s ease-in-out 0.2s backwards;
+	animation:moveUp 0.6s ease-in-out 0.2s backwards;
+}
+@-webkit-keyframes moveUp{
+	0%{
+		-webkit-transform:translateY(40px);
+		transform:translateY(40px);
+		opacity:0; 
+	}
+	100%{
+		-webkit-transform:translateY(0px);
+		transform:translateY(0px);
+		opacity:1;
+	}
+}
+@-moz-keyframes moveUp{
+	0%{
+		-moz-transform:translateY(40px);
+		transform:translateY(40px);
+		opacity:0; 
+	}
+	100%{
+		-moz-transform:translateY(0px);
+		transform:translateY(0px);
+		opacity:1;
+	}
+}
+@-ms-keyframes moveUp{ 
+	0%{
+		-ms-transform:translateY(40px);
+		transform:translateY(40px);
+		opacity:0; 
+	}
+	100%{
+		-ms-transform:translateY(0px);
+		transform:translateY(0px);
+		opacity:1;
+	}
+}
+@-o-keyframes moveUp{ 
+	0%{
+		-o-transform:translateY(40px);
+		transform:translateY(40px);
+		opacity:0; 
+	}
+	100%{
+		-o-transform:translateY(0px);
+		transform:translateY(0px);
+		opacity:1;
+	}
+}
+@keyframes moveUp{ 
+	0%{
+		transform:translateY(40px);
+		opacity:0; 
+	}
+	100%{
+		transform:translateY(0px);
+		opacity:1;
+	}
+}
+.st-color{
+	background:#CC69ED;
+}
+.st-color .st-desc{
+	background:#fff;
+}
+.st-color [data-icon]:after{
+	color:#CC69ED;
+}
+.st-color h2{
+	color:#fff;
+	text-shadow:1px 1px 1px rgba(0,0,0,0.1);
+}
+.st-color p{
+	color:rgba(255,255,255,0.8);
+}
+/*移动设备自适应*/
+@media screen and(max-width:520px){
+	.st-panel h2{
+		font-size:42px;
+	}
+	.st-panel p{
+		width:90%;
+		left:10%;
+		margin-top:0;
+	}
+	.st-container > a{
+		font-size:13px;
+	}
+}
+@media screen and(max-width:360px){
+	.st-panel h2{
+		font-size:42px;
+	}
+	.st-container > a{
+		font-size:10px;
+	}
+	.st-desc{
+		width:120px;
+		height:120px;
+		margin-left:-60px;
+	}
+	[data-icon]:after{
+		font-size:60px;
+		-webkit-transform: rotate(-45deg) translateY(25%);
+		-ms-transform: rotate(-45deg) translateY(25%);
+		-o-transform: rotate(-45deg) translateY(25%);
+		transform: rotate(-45deg) translateY(25%);
+	}
+
+}
