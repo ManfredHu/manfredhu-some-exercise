@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>志愿报名系统</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="jquery.json.js"></script>
+</head>
+<body>
+	<div class="system" id="add">
+
+
+	</div>
+	<div style="position:fixed;top:20px;right:20px;">
+		<input id="btn1" style="background:#F1FEDD;border:1px solid #aaa;" type="button" value="点我查看JSON数据" />
+		<input id="btn2" style="background:#F1FEDD;border:1px solid #aaa;" type="button" value="点我向div添加JSON数据" />
+		<input id="btn3" style="background:#F1FEDD;border:1px solid #aaa;"type="button" value="点我向树添加文本框" />
+		<input id="btn4" style="background:#F1FEDD;border:1px solid #aaa;"type="button" value="点我向后台传输JSON" />
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			var jsonString = '{"团队信息":{},"个人信息":{"项目经验":"#","语言":{"普通话":"#","粤语":"#","英语":"#"},"办公软件":{"Word":"#","Excel":"#","PPT":"#","Access":"#"},"多媒体":{"photoshop":"#","音频剪辑":"#","视频剪辑":"#"},"宣传报道":{"摄影":"#","摄像":"#","采访":"#","新闻稿撰写":"#","海报传单制作":"#","微博管理":"#","微信管理":"#","网站管理":"#"},"舞台工作经验":{"音响设备调试":"#","灯光控制":"#","采访":"#","新闻稿撰写":"#","海报传单制作":"#","微博管理":"#","微信管理":"#","网站管理":"#"},"其他":{"礼仪":"#","医疗":"#","活动策划":"#"}},"技能":{"项目经验":"#","语言技能":{"普通话":"#","日语技能":"#","英语技能":"#"},"办公软件":{"三国杀":"#","VS":"#","fiddle":"#","QQ":"#"},"Adobe":{"PS":"#","AI":"#","AE":"#"},"宣传报道":{"摄影":"#","摄像":"#","采访":"#","新闻稿撰写":"#","海报传单制作":"#","微博管理":"#","微信管理":"#","网站管理":"#"},"舞台工作经验":{"音响设备调试":"#","灯光控制":"#","采访":"#","新闻稿撰写":"#","海报传单制作":"#","微博管理":"#","微信管理":"#","网站管理":"#"},"其他技能":{"乐器":"#","医疗":"#","活动策划":"#"}}}';
+			$("#btn1").click(function(){
+				alert(jsonString);
+			});
+			$('#btn2').click(function(){
+				var data = setData(jsonString);
+				$("#add").append(data);
+			});
+			$('#btn3').click(function(){
+				insertTextInput();
+			});
+			$('#btn4').click(function(){
+				var data = getData();
+				alert($.toJSON(data));
+			});
+		});
+		/*将页面数据读取转化为JSON*/
+		function getData(){
+			var constructor = new Object();
+			var h1Object = new Object();
+			$(".first").each(function(){
+				var seconds = $(this).find('>div.second');
+				var h3Object = new Object(); 
+				var h2Object = new Object(); 
+				if(seconds&&seconds.length){
+					for(var j=0;j<seconds.length;j++){
+						var thirds = $(seconds[j]).find('>div.third'); //获取当前div.second下的div.third
+
+						if(thirds&&thirds.length){
+							var h4s = $(thirds).find('>h4');
+							var h4Object = new Object(); //三级标题对象构建，名字为h4,值为input的value
+							if(h4s&&h4s.length){
+								for(var i=0;i<h4s.length;i++){
+									if($(h4s[i]).find('input').val().length==0)
+										h4Object[$(h4s[i]).text()] = "#";
+									else 
+										h4Object[$(h4s[i]).text()] = $(h4s[i]).find('input').val();
+								}
+							}
+							h3Object[$(seconds[j]).find('>h3').text()] = h4Object;
+						}else{
+							if($(seconds[j]).find('>h3>input').val() == ""){//如果没有内容
+								h3Object[$(seconds[j]).find('>h3').text()] = "#";
+							}else{
+								h3Object[$(seconds[j]).find('>h3').text()] = $(seconds[j]).find('>h3>input').val();
+							}
+						}
+
+					}
+					h1Object[$(this).find('>h2').text()] = h3Object;
+				}else {
+					if($(this).find('>h2>input').val()=="")
+						h1Object[$(this).find('>h2').text()] = "#";//只有一个一级标题
+					else 
+						h1Object[$(this).find('>h2').text()] = $(this).find('>h2>input').val();
+				}
+			});
+			return h1Object;//返回构建的JSON对象
+		}
+		/*将JSON数据绑定到页面*/
+		function setData(data){
+			var html = "";
+			var obj = eval('('+data+')'); //字符串转JSON对象
+			$.each(obj,function(name,key){
+				var html1 = ""; //采用分级加字符串的方法，每次迭代一个，然后记入总的html里面
+				html1 += "<div class='first'><h2>"+name+"</h2>";
+				if(!isEmptyObject(key)){
+					$.each(key,function(name,key){
+						var html2 = "<div class='second'>";
+						html2 += "<h3>"+name+"</h3>";
+						if(!isEmptyObject(key)&&key!='#'){
+							html2 +="<div class='third'>";
+							for(var temp in key){
+								if(temp!=0)
+									html2 += "<h4>"+temp+"</h4>";
+							}
+							html2 += "</div>";//对应<div class='third'>
+						}
+						html2 += "</div>";//对应<div class='second'>
+						html1 += html2;
+					});
+					html1 += "</div>";
+				}else{
+					html1 += "</div>";//只有一级标题的时候，闭合标签
+				}
+				html += html1;
+			});
+			console.log(html);
+			return html;
+		}
+		//判断一个对象是不是空的对象
+		function isEmptyObject(obj){
+			for(var name in obj){
+				return false;
+			}
+			return true;
+		}
+		/*迭代向页面内添加文本框
+		  文本框<input style="border:1px solid #aaa;padding:2px 5px;width:100px" type="text" value="" />
+		*/
+		function insertTextInput(){
+			var textInput = "<input style='border:1px solid #aaa;padding:2px 5px;width:100px' type='text' value='' />"
+			$(".first").each(function(){
+				var divSedonds = $(this).find('>div.second');
+				if(divSedonds&&divSedonds.length>0){
+					$(divSedonds).each(function(){
+						var divThirds = $(this).find('>div.third');
+						if(divThirds&&divThirds.length>0){
+							$(divThirds).each(function(){
+								//三级标题里面添加文本框
+								$(this).find('>h4').append(textInput);
+							});
+						}else{
+							//只有二级标题没有三级标题
+							$(this).find('>h3').append(textInput);
+						}
+					});
+				}else{
+					//找不到二级标题,向一级标题下加input
+					$(this).find('>h2').append(textInput);
+				}
+			});
+		}
+	</script>
+</body>
+</html>
