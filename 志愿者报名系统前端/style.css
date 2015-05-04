@@ -1,0 +1,59 @@
+@charset "UTF-8";
+*{
+		margin:0;
+		padding:0;
+		border:0 none;
+		font-size:16px;
+	}
+	h3,h4,h5,h6{
+		font-weight: 400;
+	}
+	.system #type{ /*类型*/
+		height:35px;
+		line-height: 35px;
+		overflow: hidden;
+		background:#FEDCBD;
+	}
+	.system #type h3{ 
+		width:300px;
+		float:left;
+		display: inline;
+		text-align: center;
+	} 
+	.system div.first,div.second,div.third,div.fourth,div.fifth{
+		overflow: hidden;
+	}
+	.system div.second h3{
+		text-align: center;	
+	}
+	.system div.second div{
+		float:left;
+		display: inline;
+	}
+	.system div.second h3,.system div.second h4,.system div.second h5{
+		width:300px;
+		float:left;
+		clear:both;
+		display: inline;
+	}
+	div.second h3{
+		background: #D3D7D4;
+	}
+	div.second h4,div.fourth{
+		background:#CDE6C7;
+	}
+	div.third{
+		border-left:1px solid #aaa;
+	}
+	div.second h5,div.fifth{
+		background:#AFB4DB;
+	}
+	div.second h3,div.second h4,div.second h5{
+		border-top:1px solid #aaa;
+	}
+	.system div.second h4,.system div.second h5{
+		text-indent: 2em;
+	}
+	div.first div.second div.third input{
+		float:right;
+	}
