@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+	<h1 class="header">
+		<img src="images/QGlogo1.png" alt="QG工作室" />
+		<span>QG用户终端</span>
+	</h1>
+	<div id="content">
+		<h2>在线调节</h2>
+		<div class="func">
+			<div>
+				<h3 id="baseFunc">基础功能</h3>
+				<div id="baseList" class="functionList">
+						<input type="submit" value="电灯开关">
+						<input type="submit" value="开/关">
+						<input type="submit" value="电灯开关">
+						<input type="submit" value="电灯开关">
+						<input type="submit" value="电灯开关">
+						<input type="submit" value="电灯开关">
+				</div>
+			</div>
+			<div class="others">
+				<h3 id="otherFunc">其他功能</h3>
+				<div id="otherList" class="functionList"  style="display:none;">
+						<input type="submit" value="空调开关">
+						<input type="submit" value="开/关">
+						<input type="submit" value="空调开关">
+						<input type="submit" value="空调开关">
+						<input type="submit" value="空调开关">		
+				</div>
+			</div>
+		</div>
+		<h2>在线谈判</h2>
+		<div class="negotiation">
+			<select>
+			  <option value="volvo">Volvo</option>
+			  <option value="saab">Saab</option>
+			  <option value="opel">Opel</option>
+			  <option value="audi">Audi</option>
+			</select>
+			<textarea>请输入内容</textarea>
+			<input class="inPut" type="text" value="对话输出" />
+			<input class="submit" type="submit" value="发送">
+		</div>
+	</div>
+	<script type="text/javascript">
+		var baseFunc = document.getElementById("baseFunc");
+		if(baseFunc){
+			baseFunc.onclick = function(){
+				this.style.color="#000";
+				this.style.backgroundColor="rgba(255,255,255,0.5)";
+				var otherFunc = document.getElementById("otherFunc");
+				otherFunc.style.transition = "all .5s ease-in-out";
+				otherFunc.style.color="#888";
+				otherFunc.style.backgroundColor="transparent";
+				document.getElementById("baseList").style.display="block";
+				document.getElementById("otherList").style.display="none";
+			}
+		}
+
+		var otherFunc = document.getElementById("otherFunc");
+		if(otherFunc){
+			otherFunc.onclick = function(){
+				this.style.color="#000";
+				this.style.backgroundColor="rgba(255,255,255,0.5)";
+				var baseFunc = document.getElementById("baseFunc");
+				baseFunc.style.transition = "all .5s ease-in-out";
+				baseFunc.style.color="#888";
+				baseFunc.style.backgroundColor="transparent";
+				document.getElementById("baseList").style.display="none";
+				document.getElementById("otherList").style.display="block";
+			}
+		}
+
+	</script>
+</body>
+</html>
