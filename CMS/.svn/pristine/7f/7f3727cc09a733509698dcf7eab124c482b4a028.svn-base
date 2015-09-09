@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.cms.domain">
+	<class	name="User"	table="tb_user">
+		<id	name="userID" type="integer" column="UserID">
+			<generator class="identity"/>
+		</id>
+		<property name="userName" column="UserName"
+			type="string" length="20"/>
+		<property name="name" column="Name"
+			type="string" length="20"/>
+		<property name="password" column="Password"
+			type="string" length="50"/>
+		<property name="isManager" column="IsManager"
+			type="boolean" />
+		<property name="email" column="Email"
+			type="string" length="50"/>
+	</class>
+</hibernate-mapping>

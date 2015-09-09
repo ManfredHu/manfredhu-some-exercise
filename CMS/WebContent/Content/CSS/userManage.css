@@ -1,0 +1,100 @@
+@CHARSET "UTF-8";
+	#content{
+	margin:0px auto;
+	width: 900px;
+}
+/*表格*/
+table.files {
+    background: none repeat scroll 0 0 #f8f8f8;
+    border-radius: 2px;
+    width: 100%;
+}
+table.files td {
+    border-top: 1px solid #eee;
+    line-height: 20px;
+    padding: 6px 3px;
+    white-space:nowrap;/*文本不换行*/
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+table.files a{
+	color:#3D5598;
+	text-decoration:none;
+}
+table.files a:hover{
+	text-decoration:underline;
+}
+
+td.name{
+	width:150px;
+	text-align:center;
+}
+td.yes,td.no{
+	width:70px;
+	text-align:center;
+}
+td.date{
+	width:120px;
+	text-align:center;
+}
+td.operation{
+	width:200px;
+	text-align:center;
+	height:27px;
+}
+table.files{
+	border:1px solid #b7c7cf;
+	margin:20px 0;
+}
+thead tr{
+    background:#e6f1f6;
+    border-color: #b7c7cf;
+    border-style: solid;
+    border-width: 1px;
+    padding: 8px 8px 0;
+    height:30px;
+    line-height:30px;
+}
+thead tr th{
+	color: #333;
+}
+tbody tr td+td{
+	text-align: center;
+}
+.fdownload,.fdelete,.fmodify{
+	padding-left:20px;
+	margin-left:3px;
+}
+.fdownload{
+	background:url(../images/iconfont-xiazai.png) no-repeat 0px 4px;
+}
+.fdelete{
+	background:url(../images/iconfont-del.png) no-repeat 0px 3px;
+}
+.fmodify{
+	background:url(../images/iconfont-xiugai2.png) no-repeat 0px 4px;
+}
+.aLi{
+	background: none repeat scroll 0 0 white;
+    border: 1px solid #e1e2e3;
+    color: #3d5598;
+    cursor: pointer;
+    display: inline-block;
+    height: 34px;
+    line-height: 34px;
+    margin-right: 9px;
+    overflow: hidden;
+    padding: 0 10px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: text-bottom;
+}
+.aLi:hover{
+	background:#3d5598;
+	color:#fff !important;
+}
+caption{
+	font-weight:600;
+	height:40px;
+	line-height:40px;
+}

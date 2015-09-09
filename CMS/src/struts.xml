@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<!-- 将上传大小限制设置为500M -->
+	<constant name="struts.multipart.maxSize" value="524288000" />
+	
+	<!-- 定义默认的抽象包，继承Struts-default,定义公用的拦截器 -->
+	<!-- ================================================ -->
+	<package name="CMS-default" extends="struts-default" abstract="true"  >	
+		
+		<!-- 配置拦截器 -->
+		<interceptors>
+			<interceptor name="userInterceptor" class="com.cms.others.UserInterceptor" />
+			<interceptor name="loginInterceptor" class="com.cms.others.LoginInterceptor" />
+			<interceptor-stack name="CMSdefaultStack" >
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+			<interceptor-stack name="CMSManagerDefaultStack" >
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="userInterceptor" />
+			</interceptor-stack>
+			<interceptor-stack name="CMSloginDefaultStack" >
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="loginInterceptor" />
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="CMSloginDefaultStack" />
+		
+	</package>
+	
+	<!-- 用户相关Action -->
+	<!-- ================================================ -->
+	<package name="user" namespace="/user" extends="CMS-default" >
+	
+		
+		
+		<!-- 拦截action -->
+		<action name="userInterceptor" class="com.cms.action.user.UserManageAction">
+			<!-- 使用管理员拦截器栈（覆盖默认） -->
+			<interceptor-ref name="CMSManagerDefaultStack" />
+			<result>/Content/user/UserManage.jsp </result>				<!-- JSP页面 -->
+		</action>
+		
+	
+		<!-- 用户登陆Action -->
+		<action name="login" class="com.cms.action.user.LoginAction">
+		
+			<!-- 使用普通默认拦截器栈（覆盖默认，不检测用户登录状态） -->
+			<interceptor-ref name="CMSdefaultStack" />
+		
+			<result name="input">/Content/user/Login.jsp</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">codeList</param>
+				<param name="namespace">/code</param>
+			</result>
+			<result name="error">/Content/tips/Error.jsp</result>
+		</action>
+		
+		<!-- 用户注册Action -->
+		<action name="register" class="com.cms.action.user.RegisterAction">
+		
+			<!-- 使用普通默认拦截器栈（覆盖默认，不检测用户登录状态） -->
+			<interceptor-ref name="CMSdefaultStack" />
+		
+			<result name="input">/Content/user/Register.jsp</result>
+			<result name="success">/Content/tips/Success.jsp</result>
+			<result name="error">/Content/tips/Error.jsp</result>
+		</action>
+		
+		<!-- 用户修改个人信息Action -->
+		<action name="updateInfo" class="com.cms.action.user.UpdateInfoAction">
+			<result name="input">/Content/user/UserInfo.jsp</result>
+			<result name="success">/Content/tips/Success.jsp</result>
+			<result name="error">/Content/tips/Error.jsp</result>
+		</action>
+		
+		<!-- 用户修改个人密码Action -->
+		<action name="updatePaw" class="com.cms.action.user.UpdatePawAction">
+			<result name="input">/Content/user/UpdatePassword.jsp</result>
+			<result name="success">/Content/tips/Success.jsp</result>
+			<result name="error">/Content/tips/Error.jsp</result>
+		</action>
+		
+		<!-- 用户退出登录Action -->
+		<action name="quit" class="com.cms.action.user.QuitAction">
+			<result name="input">/Content/myCode/MyCode.jsp</result>
+			<result name="success">/Content/user/Login.jsp</result>
+			<result name="error">/Content/tips/Error.jsp</result>
+		</action>
+		
+		<!-- 管理员查看用户分页Action -->
+		<action name="page" class="com.cms.action.user.UserPageAction">
+		
+			<!-- 使用管理员拦截器栈（覆盖默认） -->
+			<interceptor-ref name="CMSManagerDefaultStack" />
+		
+			<result name="input">/Content/user/UserManage.jsp</result>
+			<result name="success">/Content/user/UserManage.jsp</result>
+			<result name="error">/Content/user/Login.jsp</result>
+		</action>
+		
+		
+		<!-- 管理员查看用户列表信息Action -->
+		<action name="UserManage" class="com.cms.action.user.UserManageAction">
+		
+			<!-- 使用管理员拦截器栈（覆盖默认） -->
+			<interceptor-ref name="CMSManagerDefaultStack" />
+		
+			<result name="input">/Content/user/UserManage.jsp</result>
+			<result name="success">/Content/user/UserManage.jsp</result>
+			<result name="error">/Content/user/Login.jsp</result>
+		</action>
+		
+		<!-- 管理员删除用户Action -->
+		<action name="deleteUser" class="com.cms.action.user.DeleteUserAction">
+		
+			<!-- 使用管理员拦截器栈（覆盖默认） -->
+			<interceptor-ref name="CMSManagerDefaultStack" />
+		
+			<result name="input">/Content/user/UserManage.jsp</result>
+			<result name="success">/Content/tips/Success.jsp</result>
+			<result name="error">/Content/tips/Error.jsp</result>
+		</action>
+		
+		<!-- 管理员获取用户信息Action -->
+		<action name="updateUser" class="com.cms.action.user.UpdateUserAction">		
+		
+			<!-- 使用管理员拦截器栈（覆盖默认） -->
+			<interceptor-ref name="CMSManagerDefaultStack" />
+		
+			<result name="input">/Content/user/UserManage.jsp</result>
+			<result name="success">/Content/user/ManageUser.jsp</result>
+			<result name="error">/Content/tips/Error.jsp</result>
+		</action>
+		
+		<!-- 管理员修改用户信息Action -->
+		<action name="updateUserInfo" class="com.cms.action.user.UpdateUserInfoAction">
+		
+			<!-- 使用管理员拦截器栈（覆盖默认） -->
+			<interceptor-ref name="CMSManagerDefaultStack" />
+		
+			<result name="input">/Content/user/ManageUser.jsp</result>
+			<result name="success">/Content/tips/Success.jsp</result>
+			<result name="error">/Content/tips/Error.jsp</result>
+		</action>
+		
+		<!-- 管理员重置用户密码Action -->
+		<action name="reSetPwd" class="com.cms.action.user.ReSetPwdAction">
+		
+			<!-- 使用管理员拦截器栈（覆盖默认） -->
+			<interceptor-ref name="CMSManagerDefaultStack" />
+	
+			<result name="input">/Content/user/UserManage.jsp</result>
+			<result name="success">/Content/tips/Success.jsp</result>
+			<result name="error">/Content/tips/Error.jsp</result>
+		</action>
+	
+		<!-- 配置所用的页面请求交由Action响应 -->
+		<action name="*">
+			<!-- 使用普通默认拦截器栈（覆盖默认，不检测用户登录状态） -->
+			<interceptor-ref name="CMSdefaultStack" />
+		
+			<result>/Content/user/{1}.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 代码功能相关Action -->
+	<!-- ================================================ -->
+	<package name="code" namespace="/code" extends="CMS-default" >
+	
+		<!-- 代码上传 -->
+		<action name="codeUpload" class="com.cms.action.code.CodeUploadAction" >
+		
+			<!-- 设置项目大小限制为100M -->
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">104857600</param>
+			</interceptor-ref>
+			
+			<interceptor-ref name="CMSloginDefaultStack" />
+			
+			<result name="input">/Content/myCode/CodeUpload.jsp</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">codeList</param>
+				<param name="namespace">/code</param>
+			</result>
+			<result name="error">/Content/tips/Error.jsp</result>
+		</action>
+		
+		<!-- 我的代码列表 -->
+		<action name="codeList" class="com.cms.action.code.CodeListAction" >
+			<result name="input" type="redirectAction">
+				<param name="actionName">codeList</param>
+				<param name="namespace">/code</param>
+			</result>
+			<result name="view" type="redirectAction">
+				<param name="actionName">codeView</param>
+				<param name="namespace">/code</param>
+				<param name="fileID" >${dirFileID}</param>
+				<param name="codeFile.path" >${parentFile.path}</param>
+				<param name="codeFile.name" >${parentFile.name}</param>
+			</result>
+			<result name="myCode">/Content/myCode/MyCode.jsp</result>
+			<result name="codeShare">/Content/codeShare/CodeList.jsp</result>
+			<result name="error">/Content/tips/Error.jsp</result>
+		</action>
+		
+		<!-- 代码文件内容查看 -->
+		<action name="codeView" class="com.cms.action.code.CodeViewAction" >
+			<result name="input" type="redirectAction">
+				<param name="actionName">codeList</param>
+				<param name="namespace">/code</param>
+			</result>
+			<result name="success">/Content/myCode/CodeView.jsp</result>
+			<result name="error">/Content/tips/Error.jsp</result>
+		</action>
+		
+		<!-- 代码项目下载 -->
+		<action name="codeDownload" class="com.cms.action.code.ProjectDownloadAction" >
+			<result name="input" type="redirectAction">
+				<param name="actionName">codeList</param>
+				<param name="namespace">/code</param>
+			</result>
+			<result name="success" type="stream">
+				<param name="contentType">application/zip;charset=ISO8859-1</param>
+				<param name="inputName">projectZipFile</param>
+				<param name="contentDispostion">attachment;filename="123.zip"</param><!-- ${projectFile.name} -->
+				<param name="bufferSize">10240</param>
+			</result>
+			<result name="error">/Content/tips/Error.jsp</result>
+		</action>
+		
+		<!--  代码共享列表 -->
+		<action name="shareList" class="com.cms.action.code.ShareListAction" >
+			<result name="input" type="redirectAction">
+				<param name="actionName">shareList</param>
+				<param name="namespace">/code</param>
+			</result>
+			<result name="success">/Content/codeShare/ShareList.jsp</result>
+			<result name="error">/Content/tips/Error.jsp</result>
+		</action>
+		
+		<!-- 代码信息修改 -->
+		<action name="codeModify" class="com.cms.action.code.CodeModifyAction" >			
+			<result name="input" type="redirectAction">
+				<param name="actionName">codeList</param>
+				<param name="namespace">/code</param>
+			</result>
+			<result name="success" type="redirectAction" >
+				<param name="actionName">codeList</param>
+				<param name="namespace">/code</param>
+			</result>
+			<result name="view">/Content/myCode/CodeModify.jsp</result>
+			<result name="error">/Content/tips/Error.jsp</result>
+		</action>
+		
+		<!-- 代码删除 -->
+		<action name="codeDelete" class="com.cms.action.code.CodeDeleteAction" >
+			<result name="input" type="redirectAction">
+				<param name="actionName">codeList</param>
+				<param name="namespace">/code</param>
+			</result>
+			<result name="success" type="redirectAction" >
+				<param name="actionName">codeList</param>
+				<param name="namespace">/code</param>
+			</result>
+			<result name="error">/Content/tips/Error.jsp</result>
+		</action>
+		
+		
+	</package>
+	
+	<!-- "我的代码"页面相关Action -->
+	<!-- ================================================ -->
+	<package name="myCode" namespace="/myCode" extends="CMS-default" >
+	
+		<default-class-ref class="com.cms.action.base.BaseAction" />
+		<!-- 配置所用的页面请求交由Action响应 -->
+		<action name="*">
+			<result name="success" >/Content/myCode/{1}.jsp</result>
+			<result name="error">/Content/tips/Error.jsp</result>
+		</action>	
+	</package>
+	
+	<!-- "代码共享"页面相关Action -->
+	<!-- ================================================ -->
+	<package name="codeShare" namespace="/codeShare" extends="CMS-default" >
+	
+		<default-class-ref class="com.cms.action.base.BaseAction" />
+		<!-- 配置所用的页面请求交由Action响应 -->
+		<action name="*">
+			<result name="success" >/Content/codeShare/{1}.jsp</result>
+			<result name="error">/Content/tips/Error.jsp</result>
+		</action>	
+	</package>
+	
+	
+
+</struts>

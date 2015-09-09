@@ -1,0 +1,140 @@
+@CHARSET "UTF-8";
+*{
+	margin：0;
+	padding:0;
+	border:0 none;
+	font-size:16px;
+	font-family:"Microsoft YaHei",微软雅黑,Helvetica,arial,nimbussansl,liberationsans,freesans,clean,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";
+}
+input, textarea {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+}
+input:focus, textarea:focus {
+    border-color: rgba(82, 168, 236, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+    outline: 0 none;
+}
+input[type="file"]:focus, input[type="radio"]:focus, input[type="checkbox"]:focus, select:focus {
+    box-shadow: none;
+    outline: thin dotted #333;
+    outline-offset: -2px;
+}
+button, input, select, textarea {
+    font-size: 100%;
+    margin: 0;
+    vertical-align: middle;
+}
+
+
+h1{
+	position:absolute;
+	top:2%;
+	left:8%;
+	margin-left:-250px;
+	padding:5px 100px;
+	width:300px;
+    font-size:20px;
+    color:#3D5598;
+    background:rgba(255,255,255,.5);
+    text-align:center;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-25deg);
+    border-top: 3px solid #3d5598;
+    border-bottom: 3px solid #3d5598;
+    visibility:hidden\0;
+    visibility:visible\9\0;
+    *visibility:hidden;
+    _visibility:hidden;
+    
+
+}
+header{
+	background-color: #f5f5f5;
+    border-bottom: 1px solid #e5e5e5;
+    min-width: 980px;
+	margin:0px auto;
+	position:relative;
+	height:42px;
+}
+header>div.center{
+	width:900px;
+	margin:0px auto;
+}
+header nav{
+	position:absolute;
+	top:0px;
+	left:25%;
+	z-index:9;
+}
+header nav a{
+	display:block;
+	height:40px;
+	line-height:40px;
+	width:80px;
+	float:left;
+	color:#515151;
+	text-decoration:none;
+	border-bottom:#d26911 2px solid;
+	text-align:center;
+}
+header nav a:hover{
+	border-bottom:#3D5598 2px solid;
+}
+header div.center h2:before{
+	content:"";
+	height:0;
+	width:10px;
+	border-color:transparent transparent transparent #3D5598;
+	border-style:solid;
+	border-width:8px;
+	position:absolute;
+	left:-15px;
+	top:3px;
+}
+header div.center h2{
+	font-weight:100;
+	color:#515151;
+	position:relative;
+	float:left;
+	margin:0px 20px 0px 0px;
+}
+div.aList{
+	position:absolute;
+	top:11px;
+	left:54%;
+}
+div.aList a{
+	text-decoration:none;
+	font-size:14px;
+	color:#515151;
+	margin-left:10px;
+	height:20px;
+	line-height:20px;
+	float:left;
+	margin-top:1px;
+}
+div.aList a:hover{
+	text-decoration:underline;
+	color:#3D5598;
+}
+a.modify{
+	padding-left:20px;
+	background:url(../images/iconfont-xiugai.png) no-repeat 0px 3px;	
+}
+a.password{
+	padding-left:20px;
+	background:url(../images/iconfont-04xiugaimima.png) no-repeat 0px 3px;	
+}
+a.exit{
+	padding-left:20px;
+	background:url(../images/iconfont-tuichu.png) no-repeat 0px 4px;	
+}
+
+div#content{
+width:900px;
+position:relative;
+margin-top:40px;
+}

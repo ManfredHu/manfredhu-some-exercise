@@ -1,0 +1,50 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>管理用户</title>
+<style type="text/css">
+	#content{
+	margin:0px auto;
+	width: 900px;
+}
+</style>
+</head>
+<%@ include file="/Content/template/Template.jsp"%>
+<body>
+	<div id="content">
+		<table>
+		<caption>所有用户</caption>
+		<tr>
+			<td> 用户名 </td>
+			<td> 邮箱  </td>
+			<td> 操作  </td>
+		</tr>
+		<s:iterator id="UserManage" value="userList" >
+			<tr>
+				<td>${UserManage.name }</td>
+				<td>${UserManage.email }</td>
+				<td><a href="updateUser?userID=${UserManage.userID }" >修改</a></td>
+				<td><a href="deleteUser?userID=${UserManage.userID }" >删除</a></td>
+				<td><a href="reSetPwd?userID=${UserManage.userID }" >重置密码</a></td>
+			</tr>
+		</s:iterator>
+		
+		<tr>
+			<td>
+			页码：
+			<c:forEach var="num" begin="1" end="${pageList}" step="1">
+				<a href="page?pageNum=${num }">${num}</a>
+			</c:forEach>
+			</td>
+		
+			<td>共 ${pageList}页</td>
+		</tr>
+		</table>
+	</div>
+</body>
+</html>

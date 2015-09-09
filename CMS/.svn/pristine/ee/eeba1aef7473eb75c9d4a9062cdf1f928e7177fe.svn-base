@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.cms.domain">
+	<class	name="CodeFile"	table="tb_file">
+		<id	name="fileID" type="integer" column="FileID">
+			<generator class="identity"/>
+		</id>
+		<!-- 文件实体的用户关联 -->
+		<!-- <many-to-one name="user" column="UserID"
+			class="User" not-null="true" lazy="false"  /> -->
+		<property name="userID" column="UserID"
+			type="integer" />
+		<property name="fatherFileID" column="FatherFileID"
+			type="integer" />
+		<property name="path" column="Path"
+			type="string" length="300"/>
+		<property name="name" column="Name"
+			type="string" length="50"/>
+		<property name="description" column="Description"
+			type="text" />
+		<property name="uploadTime" column="UploadTime"
+			type="date" length="50"/>
+		<property name="isShare" column="IsShare"
+			type="boolean" />
+	</class>
+</hibernate-mapping>

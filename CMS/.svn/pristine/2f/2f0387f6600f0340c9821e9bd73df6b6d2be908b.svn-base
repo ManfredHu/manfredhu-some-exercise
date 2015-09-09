@@ -1,0 +1,153 @@
+@CHARSET "UTF-8";
+/*全局样式*/
+*{
+	margin：0;
+	padding:0;
+	border:0 none;
+	font-size:16px;
+	font-family:"Microsoft YaHei",微软雅黑,Helvetica,arial,nimbussansl,liberationsans,freesans,clean,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";
+}
+input, textarea {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+}
+input:focus, textarea:focus {
+    border-color: rgba(82, 168, 236, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+    outline: 0 none;
+}
+input[type="file"]:focus, input[type="radio"]:focus, input[type="checkbox"]:focus, select:focus {
+    box-shadow: none;
+    outline: thin dotted #333;
+    outline-offset: -2px;
+}
+button, input, select, textarea {
+    font-size: 100%;
+    margin: 0;
+    vertical-align: middle;
+}
+
+
+h1{
+	position:fixed;
+	top:10%;
+	left:10%;
+	margin-left:-450px;
+	padding:5px 300px;
+	width:300px;
+    font-size:40px;
+    color:#3D5598;
+    background:rgba(255,255,255,.5);
+    text-align:center;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    border-top: 3px solid #3d5598;
+}
+h1,h2{
+    font-weight: 400;
+}
+h2{
+	border-left:3px solid #3D5598;
+    padding-left:15px;
+}
+body{
+	background:url(../images/gg.jpg) no-repeat 50% 20%;
+}
+form.login{
+	background:#fff;
+	background:rgba(255,255,255,.5);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    width:300px;
+    padding:50px 80px 30px 80px;
+    position:absolute;
+    top:30%;
+    left:50%;
+}
+label.label{
+	width:70px;
+	display:block;
+	float:left;
+}
+label.label2{
+	width:80px;
+	display:block;
+	float:left;
+}
+div.user,div.password{
+	height:30px;
+	line-height:30px;
+	padding:10px 0;
+} 
+div.user{
+	border-top:1px solid #aaa;
+	margin-top:20px;
+}
+div.password{
+	border-bottom:1px solid #aaa;
+	margin-bottom:20px;
+}
+form.login input.text{
+	background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 2px;
+    color: #555555;
+    display: inline-block;
+    font-size: 12px;
+    height: 18px;
+    line-height: 18px;
+    margin-bottom: 9px;
+    padding: 4px;
+    width: 210px;
+}
+div.autoLogin{
+	height:20px;
+	line-height:20px;
+	text-align:right;
+	margin-right:13px;
+} 
+div.autoLogin label{
+	font-size:14px;
+}
+.button{
+	text-align: center;
+	border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+    font-size: 14px;
+    line-height: normal;
+    padding: 9px 14px;
+    cursor: pointer;
+    background-color: #3d5098;
+    background-image: -moz-linear-gradient(center top , #3d5998, #3d4298);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    float:left;
+}
+div.b{
+	margin-top:20px;
+}
+a.button1{
+	text-decoration:none;
+	color:#0066aa;
+	font-size:14px;
+	display:block;
+	height:40px;
+	line-height:40px;
+	float:left;
+	margin-left:20px;
+}
+a.button1:hover{
+	text-decoration:underline;
+}
+div.normal{
+	height: 30px;
+    line-height: 30px;
+    padding: 10px 0;
+}
