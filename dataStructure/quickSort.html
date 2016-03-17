@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>快排</title>
+</head>
+
+<body>
+    <input type="text" id="arrayInput" placeholder="请输入数组，类似1,2,3,4,5,6这样的形式">
+    <input type="button" id="btn" value="排序">
+    <script type="text/javascript">
+    // document.getElementById('btn').click = function() {
+    //     var arr = document.getElementById('arrayInput').value;
+    //     quickSort(arr.split(','));
+    // };
+    var arrNumber = [5,2,10,1,4,6];
+    function quickSort(arr) {　　
+        if (arr.length <= 1) {
+            return arr;
+        }　　
+        var pivotIndex = Math.floor(arr.length / 2);　　
+        var pivot = arr.splice(pivotIndex, 1)[0];　　
+        var left = [];　　
+        var right = [];　　
+        for (var i = 0; i < arr.length; i++) {　　　　
+            if (arr[i] > pivot) {　　　　　　
+                left.push(arr[i]);　　　　
+            } else {　　　　　　
+                right.push(arr[i]);　　　　
+            }　　
+        }　　
+        return quickSort(left).concat([pivot], quickSort(right));
+    }
+    console.log(quickSort(arrNumber))
+    </script>
+</body>
+
+</html>
