@@ -70,7 +70,12 @@ function sleep(delay: number) {
   // 创建1-100的数组
   const incrementArr = [...new Array(10).keys()] // ...展开迭代器
 
-  const rstArr = await Promise.all(incrementArr.map(item => getDataRetry(item, retryTime, retryInterval)))
-  console.log(rstArr)
+  // 这里只要并发调用就好了，不关心返回值
+
+  // 并发调用方法一
+  // incrementArr.forEach(item => getDataRetry(item, retryTime, retryInterval))
+
+  // 并发调用方法二
+  Promise.all(incrementArr.map(item => getDataRetry(item, retryTime, retryInterval)))
 })()
 
