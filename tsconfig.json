@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "outDir": "dist",
     "module": "esnext",
-    "target": "es6",
+    "target": "esnext",
     "lib": [
       "dom",
       "es6",

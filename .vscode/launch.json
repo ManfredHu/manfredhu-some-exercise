@@ -9,7 +9,7 @@
       "type": "node",
       "request": "launch",
       "args": [
-        "${workspaceRoot}/src/index.ts" // 入口文件
+        "${workspaceRoot}/src/retry.ts" // 入口文件
       ],
       "runtimeArgs": [
         "--nolazy",

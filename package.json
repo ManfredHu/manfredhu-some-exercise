@@ -4,12 +4,14 @@
   "description": "",
   "main": "test.js",
   "scripts": {
+    "dev": "rm -rf ./dist/src/ && nodemon --exec 'tsc'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "nodemon": "^2.0.13",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3"
   }
