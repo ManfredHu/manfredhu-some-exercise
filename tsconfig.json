@@ -4,6 +4,7 @@
     "outDir": "dist",
     "module": "esnext",
     "target": "esnext",
+    "noImplicitThis": true,
     "lib": [
       "dom",
       "es6",
