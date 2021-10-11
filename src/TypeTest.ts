@@ -1,24 +1,9 @@
-type ObjectDescriptor<D, M> = {
-  data?: D;
-  methods?: M & ThisType<D & M>; // Type of 'this' in methods is D & M
-};
- 
-function makeObject<D, M>(desc: ObjectDescriptor<D, M>): D & M {
-  let data: object = desc.data || {};
-  let methods: object = desc.methods || {};
-  return { ...data, ...methods } as D & M;
+interface User {
+  name: string;
+  age: number;
 }
- 
-let obj = makeObject({
-  data: { x: 0, y: 0 },
-  methods: {
-    moveBy(dx: number, dy: number) {
-      this.x += dx; // Strongly typed this
-      this.y += dy; // Strongly typed this
-    },
-  },
-});
- 
-obj.x = 10;
-obj.y = 20;
-obj.moveBy(5, 5);
+
+type Func = (user: User, a: number) => void;
+
+type Param = Parameters<Func>; // Param = User
+// type AA = Parameters<string>; // string

@@ -4,6 +4,7 @@
     "outDir": "dist",
     "module": "esnext",
     "target": "esnext",
+    "moduleResolution": "node",
     "noImplicitThis": true,
     "lib": [
       "dom",
@@ -12,5 +13,8 @@
       "ES2019",
       "ES2020"
     ]
+    // "types": [
+    //   // 空的
+    // ]
   }
 }
