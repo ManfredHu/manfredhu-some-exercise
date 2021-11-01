@@ -5,6 +5,7 @@
     "module": "esnext",
     "target": "esnext",
     "moduleResolution": "node",
+    "experimentalDecorators": true,
     "noImplicitThis": true,
     "lib": [
       "dom",
