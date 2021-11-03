@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue test | vue组件传值的几种方法</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+
+  </div>
+  <script>
+    Vue.component('com', {
+      props: ['postTitle', 'propsBySync'],
+      template: '<h3 @click="emit">Thisi is com components.postTitle {{ postTitle }}</h3>',
+      inject: ['foo'],
+      methods: {
+        emit(event) {
+          this.$emit('parentEvt', 123)
+        }
+      },
+      mounted() {
+        console.log(`$attr is object that includes no declare props`, this.$attrs)
+        console.log(`$listener is object that includes event without navitve`, this.$listeners)
+
+        console.log(`foo injected is from parents provide: `, this.foo)
+
+        setTimeout(() => {
+          this.$emit('update:propsBySync', 'value from child')
+        }, 1000)
+      }
+    })
+
+    new Vue({
+      el: '#app',
+      data: {
+        msg: 'Hello World',
+        propsBySyncCharater: 'parent'
+      },
+      provide: {
+        foo: 'parent provide foo'
+      },
+      methods: {
+        parentEvt(childParams) {
+          console.log(`that is params from child`)
+        },
+        abc() {
+          console.log('abc')
+        }
+      },
+      watch: {
+        propsBySyncCharater(newVal, oldVal) {
+          // to show value change
+          console.log(`new value:`, newVal)
+          console.log(`old value:`, oldVal)
+          return newVal
+        }
+        
+        
+      },
+      template: 
+        // 方法1
+        // :propsBySync="propsBySyncCharater"
+        // @update:propsBySync="propsBySyncCharater = $event"
+        // 方法2，与上面等价
+        // :propsBySync.sync="propsBySyncCharater"
+      `
+        <div>
+          <com :postTitle="msg" @parentEvt="parentEvt" otherPropsButNoUsed="fuck you" 
+            @otherListenerWithoutNative="abc"
+            @otherListenerWithNative.native="abc"
+            :propsBySync.sync="propsBySyncCharater"
+          ></com>
+        </div>
+      `
+    })
+  </script>
+</body>
+</html>
