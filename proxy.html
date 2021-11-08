@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>proxy</title>
+</head>
+
+<body>
+  <script>
+    const handler = {
+      has(target, propKey) {
+        console.log(`has handler`)
+        /*
+         * 做你的操作
+         */
+        return propKey in target
+      },
+      get(target, propKey) {
+        console.log(`get handler`)
+        return target[propKey]
+      },
+      set(target, propKey, value, receiver) {
+        console.log(`set handler`)
+        target[propKey] = value
+      },
+      deleteProperty(target, propKey) {
+        console.log(`delete handler`)
+        delete target[propKey]
+      },
+      ownKeys(target) {
+        return Object.keys(target)
+      }
+    }
+    const proxy = new Proxy({
+      a: 1
+    }, handler)
+
+    // 1.has ------------------------------------------------------
+    // for (let i in proxy) { // for-in没触发has拦截器
+    //   debugger
+    // }
+    if ('a' in proxy) { // 触发
+      console.log(`in opr`)
+    }
+    // 2.get ------------------------------------------------------
+    console.log(proxy.a)
+    // 3.set ------------------------------------------------------
+    console.log(proxy.b = 2)
+    // 4.delete ------------------------------------------------------
+    delete proxy.a
+    // 5.ownKeys ------------------------------------------------------
+    console.log(Object.keys(proxy))
+  </script>
+</body>
+
+</html>
