@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //   写一个程序实现两个大数相加。
+    const a = "9007199254740991";
+    const b = "1234567899999999999";
+    // const a = '991'
+    // const b = '999999'
+    function add(a, b) {
+      let len1 = a.length
+      let len2 = b.length
+
+      const tempa = a.split('').reverse()
+      const tempb = b.split('').reverse()
+      let biggerTen = false
+
+      let len = Math.max(len1, len2) // 最大长度
+      const rst = []
+
+      for(let i = 0;i <= len; i++) {
+        const num = parseInt(tempa[i] || 0) + parseInt(tempb[i] || 0)
+        let yushu = (num + (biggerTen ? 1: 0)) % 10
+        rst.push(yushu)
+        biggerTen = (num + (biggerTen ? 1: 0)) >= 10
+      }
+      return rst.reverse().join('').replace(/^0+/,'')
+    }
+    console.log(add(a, b));
+  </script>
+</body>
+
+</html>

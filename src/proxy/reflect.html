@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var obj = {
+      a: 10,
+      [Symbol.for('foo')]: 2
+    };
+    Object.defineProperty(obj, 'c', {
+      value: 3,
+      enumerable: false
+    })
+    var p = new Proxy(obj, {
+      ownKeys(target) {
+        return [...Reflect.ownKeys(target), 'b', Symbol.for('bar')]
+      }
+    })
+    const keys = Object.keys(p) // ['a']
+    // 自动过滤掉Symbol/非自身/不可遍历的属性
+
+    /* 和Object.keys()过滤性质一样，只返回target本身的可遍历属性 */
+    for (let prop in p) {
+      console.log('prop-', prop) /* prop-a */
+    }
+    debugger
+    /* 只返回拦截器返回的非Symbol的属性，不管是不是target上的属性 */
+    const ownNames = Object.getOwnPropertyNames(p) /* ['a', 'c', 'b'] */
+
+    /* 只返回拦截器返回的Symbol的属性，不管是不是target上的属性*/
+    const ownSymbols = Object.getOwnPropertySymbols(p) // [Symbol(foo), Symbol(bar)]
+
+    /*返回拦截器返回的所有值*/
+    const ownKeys = Reflect.ownKeys(p)
+    // ['a','c',Symbol(foo),'b',Symbol(bar)]
+
+    // 作者：我不是外星人
+    // 链接：https://juejin.cn/post/6858899262596448270
+    // 来源：稀土掘金
+    // 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+  </script>
+</body>
+
+</html>
