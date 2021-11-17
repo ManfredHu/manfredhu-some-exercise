@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue3 track effect trigger函数简单实现</title>
+</head>
+<body>
+  <script>
+    // 三层思路
+    // targetMap: weakMap
+    //   key: Product -> depsMap: Map
+    //                   key: price -> dep: Set
+    //                                 Effect
+    
+    const targetMap = new WeakMap()
+    const depsMap = new Map()
+
+    function track(target, key) {
+      let depsMap = targetMap.get(key)
+      if (!depsMap) {
+        targetMap.set(target, (depsMap = new Map()))
+      }
+      let dep = depsMap.get(key)
+      if (!dep) {
+        depsMap.set(key, (dep = new Set()))
+      }
+      dep.add(effect)
+    }
+    function trigger(target, key) {
+      let depsMap = targetMap.get(target)
+      if (!depsMap) return
+      let dep = depsMap.get(key)
+      if (dep) {
+        dep.forEach(effect => effect());
+      }
+    }
+    // ------------------------------------------------------------
+    // some test
+    // 假设是普通是js对象和属性
+    let product = {price: 5, quantity: 2}
+    let total = 0
+    let effect = () => {
+      total = product.price * product.quantity
+    }
+
+    // track需要遍历所有的product对象属性
+    track(product, 'quantity')
+    effect()
+    debugger
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <link rel="stylesheet" href="https://cdn.xxx.com/styles/test.css" onerror="errorHandler(this)"> -->
+  <script>
+    function divClick(e) {
+      debugger
+    }
+    window.addEventListener('error', e => {
+      // 注意这里error没有message属性
+      // 是一个event事件对象而不是error对象
+    }, true) // 注意资源错误需要在捕获阶段
+  </script>
+</head>
+<body>
+  <div id="abc" onclick="divClick()">12313123</div>
+  <script>
+    // window.onerror = function(message, source, lineno, colno, error) {
+    //   console.log(`window.onerror exec`)
+    //   if (error instanceof ReferenceError) {
+    //     console.error(`引用错误`)
+    //   } else if (error instanceof TypeError) {
+    //     console.error(`类型错误`)
+    //   }
+    //   console.log(message, source, lineno, colno, error)
+    //   // throw error
+    // }
+    // // a // Uncaught ReferenceError
+    new Promise(resolve => setTimeout(resolve, 2000)).then(() => {
+      a // 异步错误
+    })
+
+    // unhandledrejection
+    window.addEventListener('unhandledRejection', e => {
+      debugger
+      if (e instanceof PromiseRejectionEvent) {
+        console.error(e)
+      }
+      // 异步错误 PromiseRejectionEvent
+    })
+    // function errorHandler(e) {
+    //   // debugger
+    // }
+    // const abc = document.querySelector('#abc')
+    // abc.addEventListener('click', () => {
+    //   // 捕获阶段
+    //   debugger
+    // }, null, true)
+    // abc.addEventListener('click', () => {
+    //   // 冒泡阶段
+    //   debugger
+    // }, null, false)
+  </script>
+  <script src="https://cdn.qq.com/js/test.js"></script>
+</body>
+</html>
