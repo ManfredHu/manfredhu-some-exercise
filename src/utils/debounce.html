@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>debounce 鼠标移动500ms后才会输出log</title>
+</head>
+<body>
+  <script>
+    function debounce(fn, delay) {
+      const context = this
+      return (...args) => {
+        clearTimeout(fn.timer)
+        fn.timer = setTimeout(fn.bind(context, args), delay)
+      }
+    }
+    let oldTime = +new Date
+
+    // bad case 基本2ms执行一次
+    // 间隔 26890ms执行 mousemove
+    // 间隔 26892ms执行 mousemove
+    // 间隔 26894ms执行 mousemove
+    // 间隔 26896ms执行 mousemove
+    // 间隔 26898ms执行 mousemove
+    // window.addEventListener('mousemove', ev => {
+    //   console.log(`间隔 ${+new Date - oldTime}ms执行 mousemove`)
+    // })
+    
+    // good case
+    const cb = debounce(function (event) {
+      console.log(`间隔 ${+new Date - oldTime}ms执行 mousemove`, event)
+    }, 500)
+    window.addEventListener('mousemove', cb)
+  </script>
+</body>
+</html>

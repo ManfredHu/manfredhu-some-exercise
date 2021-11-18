@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>throttle 鼠标移动过程中间隔100ms输出log</title>
+</head>
+<body>
+  <script>
+    function throttle(fn, threshold = 1000) {
+      const context = this
+      let last = null
+      return (...args) => {
+        const now = +new Date
+        if (!last) last = now
+
+        if (last && now - last > threshold) {
+          last = now
+          fn.apply(context, args)
+        }
+      }
+    }
+    let oldTime = +new Date
+
+    // lockJSThread exec 4642
+    // lockJSThread exec 4901
+    // lockJSThread exec 5152
+    // lockJSThread exec 5411
+    function lockJSThread() {
+      console.log(`lockJSThread exec`, +new Date - oldTime)
+      // debugger
+      // while(1) {
+      //   console.log(`JS 线程卡死`)
+      // }
+    }
+    const cb = throttle(lockJSThread)
+    setInterval(cb, 10)
+  </script>
+</body>
+</html>
