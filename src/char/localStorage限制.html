@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>https://juejin.cn/post/7030585901524713508</h1>
+  <script>
+    function sizeofUtf16Bytes(str) {
+        var total = 0,
+            charCode,
+            i,
+            len;
+        for (i = 0, len = str.length; i < len; i++) {
+            charCode = str.charCodeAt(i);
+            if (charCode <= 0xffff) {
+                total += 2;
+            } else {
+                total += 4;
+            }
+        }
+        return total;
+    }
+
+    // 作者：云的世界
+    // 链接：https://juejin.cn/post/7030585901524713508
+    // 来源：稀土掘金
+    // 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+    const charTxt = "人";
+    let count = (10 * 1024 * 1024 / 2) - 8 / 2;
+    // 10M * 1024k/M * 1024B/k
+    let content = new Array(count).fill(charTxt).join(""); // key+value已经满了，如果这里再加1就会失败，如下
+    // err DOMException: Failed to execute 'setItem' on 'Storage': Setting the value of 'aa🔴' exceeded the quota.
+    const key = "aa🔴"; // a是2个字节,16位表示为0x0061; 🔴是4个字节，32位表示为0xd83d 0xdd34，这里共8个字节
+    localStorage.clear();
+    try {
+      localStorage.setItem(key, content);
+    } catch (err) {
+      console.log("err", err);
+    }
+
+    const sizeKey = sizeofUtf16Bytes(key);
+    const contentSize = sizeofUtf16Bytes(content);
+    console.log("key size:", sizeKey, content.length);
+    console.log("content size:", contentSize, content.length);
+    console.log("total size:", sizeKey + contentSize, content.length + key.length);
+  </script>
+</body>
+</html>

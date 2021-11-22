@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>字符串转小驼峰</title>
+</head>
+<body>
+  <script>
+    // function lowerCamelCase(str) {
+    //   if (!str) return str
+    //   if (!str.includes('_') && !str.includes('-')) return str.charAt(0).toLowerCase() + str.slice(1)
+    //   str = str.toLowerCase()
+
+    //   const subStr = str.split(/_+|-+/)
+    //   // console.log(`subStr`, subStr)
+    //   const fistLetter = subStr[0].charAt(0).toLowerCase()
+    //   // console.log(`fistLetter`, fistLetter)
+    //   // console.log(`str.replace(/_+([A-Za-z])/, (_, m) => m.toUpperCase()`, str.replace(/_+([A-Za-z])/, (_, m) => m.toUpperCase()))
+    //   let temp = str.slice(subStr.length >= 2 ? subStr[0].length: 0)
+    //   // console.log(`temp`, temp, str)
+    //   const arr = [fistLetter, subStr[0].slice(1).toLocaleLowerCase(), temp.replace(/_+([A-Za-z])/, (_, m) => m.toUpperCase())]
+    //   // console.log(`123`, arr)
+    //   return arr.join('')
+    // }
+
+    function lowerCamelCase(str) {
+      if (!str) return str
+      if (/-|_/.test(str)) {
+        str = str.toLowerCase()
+      }
+      const rst = str.replace(/^[A-Z]|_+\w+/g, function (a, index) {
+        if (index === 0) return a.toLowerCase()
+        // 去掉前置__等
+        const b = a.replace(/^[_-]+/, '')
+        return b.charAt(0).toUpperCase() + b.slice(1)
+      })
+      return rst
+    }
+    console.log(lowerCamelCase(`TestVariable`))
+    console.log(lowerCamelCase(`test_variable`))
+    console.log(lowerCamelCase(`TEST_VARIABLE`))
+    console.log(lowerCamelCase(`TEST___VARIABLE`))
+  </script>
+</body>
+</html>

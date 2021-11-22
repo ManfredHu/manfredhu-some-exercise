@@ -1,0 +1,50 @@
+#app {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.container {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  overflow: hidden;
+  position: absolute;
+}
+
+.boxs {
+  width: 800px;
+  height: 100%;
+  position: absolute;
+  /* animation: slideleft 10s step-end infinite; */
+  animation: slideleft 10s steps(1) infinite; /*精髓，一个是slideleft的0，100%重置到left: 0，其次是steps这个属性*/
+}
+
+.box {
+  background: red;
+  float: left;
+  width: 200px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes slideleft {
+  0,
+  100% {
+    left: 0;
+  }
+
+  25% {
+    left: -200px;
+  }
+
+  50% {
+    left: -400px;
+  }
+
+  75% {
+    left: -600px;
+  }
+}
