@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class EventEmitter {
+      constructor() {
+        this.eventMap = new Map()
+      }
+      on(type, event) {
+        if (!this.eventMap.get(type)) {
+          this.eventMap.set(type, [event])
+        } else {
+          this.eventMap.get(type).push(event)
+        }
+      }
+      emit(type, ...args) {
+        const list = this.eventMap.get(type)
+        if (list) {
+          list.forEach(element => {
+            element.apply(this, args)
+          });
+        }
+      }
+      off(type, event) {
+        // 有事件则删除事件
+        if (event) {
+          const list = this.eventMap.get(type)
+          if (list) {
+            list.splice(list.indexOf(event) >>> 0, 1)
+          }
+        } else {
+          this.eventMap.set(type, [])
+        }
+      }
+    }
+    const instance = new EventEmitter()
+    function a() {
+      console.log(`a`)
+    }
+    function a2() {
+      console.log(`a2`)
+    }
+    function b() {
+      console.log(`b`)
+    }
+    instance.on('a', a)
+    instance.on('a', a2)
+    instance.emit('a')
+    instance.on('b', b)
+    instance.off('b', b) // 删除监听
+    instance.off('b') // 删除监听
+    instance.emit('b') // nothing
+  </script>
+</body>
+</html>

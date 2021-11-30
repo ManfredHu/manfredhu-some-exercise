@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作用域</title>
+</head>
+
+<body>
+  <a href="https://learnku.com/articles/50523" target="_blank">https://learnku.com/articles/50523</a>
+  <script>
+    this.n = 1
+
+    const fun2 = function() {
+      console.log(this.n)
+    }
+    var a = {
+      n: 2,
+      fun1() {
+        // console.log(this)  // {n: 2, fun1: function}
+        // console.log(this.n) // 2
+        a.fun2()
+        // fun2()
+      },
+      fun2
+    }
+
+    a.fun1()
+  </script>
+</body>
+
+</html>
