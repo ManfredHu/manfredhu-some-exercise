@@ -10,26 +10,26 @@
 
 <body>
   <script>
-    function foo() {
-      var myName = "foo myName"
-      let test1 = 1
-      const test2 = 2
-      var innerBar = {
-        setName: function (newName) {
-          myName = newName
-        },
-        getName: function () {
-          console.log(test1)
-          return myName
-        }
-      }
-      return innerBar
+    async function foo() {
+      console.log('foo')
     }
-    var bar = foo()
-    bar.setName("test")
-    bar.getName()
-
-    console.log(bar.getName())
+    async function bar() {
+      console.log('bar start')
+      await foo()
+      console.log('bar end')
+    }
+    console.log('script start')
+    setTimeout(function () {
+      console.log('setTimeout')
+    }, 0)
+    bar();
+    new Promise(function (resolve) {
+      console.log('promise executor')
+      resolve();
+    }).then(function () {
+      console.log('promise then')
+    })
+    console.log('script end')
   </script>
 </body>
 
