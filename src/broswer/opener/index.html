@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test opener</title>
+</head>
+<body>
+  <div><a href="./other.html" target="_blank">到同源另外的页面，会执行脚本改变这里的背景</a></div>
+  <div><button onclick="openPage2()">click事件到同源另外的页面，会执行脚本改变这里的背景</button></div>
+  <script>
+    function openPage2() {
+      window.open('./other.html', '_blank');
+    }
+  </script>
+</body>
+</html>

@@ -21,6 +21,13 @@
     </div>
   </div>
   <script>
+    setTimeout(() =>{
+      debugger
+      // lock js thread,but css animation execed
+      for (let i = 0; i < Number.MAX_SAFE_INTEGER; i++) {
+      //   console.log(i)
+      }
+    }, 2000) 
     
   </script>
 </body>

