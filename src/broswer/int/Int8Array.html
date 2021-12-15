@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var int8 = new Int8Array(2);
+    int8[0] = 2 ** 7 - 1 ; // 1111111
+    const a = int8[0].toString(2)
+    console.log(`2 ** 7 - 1: ${a}, length: ${a.length}`)
+    int8[1] = 2 ** 7; // 10000000 === 1 << 7 = parseInt('10000000', 2)
+    const b = int8[1].toString(2)
+    console.log(`2 ** 7: ${b}, length: ${String(Math.abs(b)).length}`)
+    // console.log(int8[0]); // 42
+    console.log(int8.length); // 2
+    console.log(int8.BYTES_PER_ELEMENT); // 1
+    console.log(int8)
+    debugger
+  </script>
+</body>
+</html>
