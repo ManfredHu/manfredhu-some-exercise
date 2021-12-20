@@ -1,5 +1,7 @@
 
 
+// 计算websocket协议升级的报文头
+
 import {createHash} from 'crypto'
 
 /**
