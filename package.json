@@ -20,6 +20,8 @@
     "@types/lodash": "^4.14.175",
     "@types/lodash-es": "^4.17.5",
     "@types/node": "^16.10.2",
-    "lodash-es": "^4.17.21"
+    "dayjs": "^1.10.7",
+    "lodash-es": "^4.17.21",
+    "ws": "^8.3.0"
   }
 }
