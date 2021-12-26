@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "ws": "node ./ws/index.js && open ./ws/index.html"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/ManfredHu/someExercise/issues"
   },
-  "homepage": "https://github.com/ManfredHu/someExercise#readme"
+  "homepage": "https://github.com/ManfredHu/someExercise#readme",
+  "dependencies": {
+    "koa": "^2.13.4",
+    "ws": "^8.3.0"
+  }
 }

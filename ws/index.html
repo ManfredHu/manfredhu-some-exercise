@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ws测试</title>
+  </head>
+  <body>
+    <script>
+      var ws = new WebSocket('ws://localhost:4000/')
+      ws.onopen = function () {
+        console.log('ws onopen')
+        setTimeout(function () {
+          ws.send('hello')
+        }, 2000)
+      }
+      ws.onmessage = function (e) {
+        console.log('ws onmessage')
+        console.log(e.data)
+      }
+      ws.onerror = (e) => {
+        console.log('ws onerror')
+        console.error(`error`, e)
+      }
+      ws.onclose = (closeEvent) => {
+        console.log('ws onclose')
+        console.warn(`close`, closeEvent)
+      }
+    </script>
+  </body>
+</html>
