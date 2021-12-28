@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      if (window.openDatabase) {
+        // var db = window.openDatabase(name, version, display_name, size);
+        const db = window.openDatabase(
+          "TestDB",
+          "0.0.1",
+          "test local db",
+          2 ** 16 - 1
+        );
+        db.transaction(
+          (tx) => {
+            var createTable =
+              "CREATE TABLE IF NOT EXISTS test " +
+              "(`id` INT, `name` TEXT, `age` INT, `sex` TEXT)";
+            tx.executeSql(createTable);
+
+            tx.executeSql(
+              `INSERT INTO test (id, name, age, sex) VALUES(1, 'Tom', 20, 'Male')`
+            );
+            tx.executeSql(
+              `INSERT INTO test (id, name, age, sex) VALUES(2, 'John', 20, 'Male')`
+            );
+            tx.executeSql(
+              `INSERT INTO test (id, name, age, sex) VALUES(3, 'Iris', 20, 'Female')`
+            );
+
+            var sqlQuery = "SELECT * FROM `test` WHERE `age`=? AND `sex`=?";
+            var value = [20, "Male"];
+            tx.executeSql(
+              sqlQuery,
+              value,
+              function (tx, rs) {
+                for (var i = 0; i < rs.rows.length; i++)
+                  console.log(rs.rows.item(i).name);
+              },
+              function (tx, err) {
+                console.error(err)
+              }
+            );
+          },
+          (err) => {
+            console.error(err);
+          }
+        );
+      }
+    </script>
+  </body>
+</html>
