@@ -1,0 +1,493 @@
+@charset "utf-8";
+
+/* TIY AD */
+div#sp_tiy a#sp_tiy_link
+    {
+    display: block;
+    width: 728px;
+    height: 90px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    /* text-indent: -9999px; */
+	overflow:hidden;
+	text-decoration: none;
+    background: transparent url("/time/20200922/kkb.jpg") 0 0 no-repeat;
+    }
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2) { 
+div#sp_tiy a#sp_tiy_link
+    {
+    display: block;
+    width: 728px;
+    height: 90px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    /* text-indent: -9999px; */
+	overflow:hidden;
+	text-decoration: none;
+    background: transparent url("/time/20200922/kkb-retina.jpg") 0 0 no-repeat;
+    background-size: auto 90px;
+    }
+}
+
+
+
+/* TIY editor */
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  color:#000000;
+  margin:0px;
+  font-size:100%;
+}
+
+#navfirst {
+  height:55px;
+  overflow:hidden;
+  min-width:380px;
+  position:absolute;
+  width:100%;
+  top:94px;
+  background-color:#f7f7f7;
+  border: 0px solid red;
+}
+
+div#navfirst ul#menu
+		{
+		height: 55px;
+		width: 365px;
+		background: transparent;
+		margin: 0;
+		padding: 0;
+		position: relative;
+        border: 0px solid red;
+        float: left;
+		}
+
+div#navfirst #tiy-btn-tryit    {
+        margin-left: 500px; 
+        border: 1px solid blue;
+        float: right;
+}
+
+div#navfirst ul#menu li
+		{
+		margin:0;
+		padding:0;
+		list-style:none;
+		position:absolute;
+		top:0;
+		}
+
+ul#menu li,ul#menu a
+		{
+		display: block;
+		height: 55px;
+		border-bottom:0;
+		}
+
+div#navfirst ul#menu li a
+		{
+		/* text-indent: -9999px; */
+		overflow:hidden;
+		text-decoration: none;
+		}
+
+#tiy_btn_index	{left:0;width:65px;}
+#tiy_btn_stack	{left:65px;width:65px;}
+#tiy_btn_theme	{left:130px;width:65px;}
+#tiy_btn_tryit	{left:195px;width:150px;}
+
+#tiy_btn_index a	{background: transparent url("/ui2019/tiy-bg.png") 0 0 no-repeat;}
+#tiy_btn_index a:hover	{background: transparent url("/ui2019/tiy-bg.png") 0 -75px no-repeat;}
+.darktheme #tiy_btn_index a	{background: transparent url("/ui2019/tiy-bg.png") 0px -150px no-repeat;}
+.darktheme #tiy_btn_index a:hover	{background: transparent url("/ui2019/tiy-bg.png") 0px -75px no-repeat;}
+
+#tiy_btn_stack a	{background: transparent url("/ui2019/tiy-bg.png") -65px 0 no-repeat;}
+#tiy_btn_stack a:hover	{background: transparent url("/ui2019/tiy-bg.png") -65px -75px no-repeat;}
+.darktheme #tiy_btn_stack a	{background: transparent url("/ui2019/tiy-bg.png") -65px -150px no-repeat;}
+.darktheme #tiy_btn_stack a:hover	{background: transparent url("/ui2019/tiy-bg.png") -65px -75px no-repeat;}
+.horizontal #tiy_btn_stack a	{background: transparent url("/ui2019/tiy-bg.png") -65px -225px no-repeat;}
+.horizontal #tiy_btn_stack a:hover	{background: transparent url("/ui2019/tiy-bg.png") -65px -300px no-repeat;}
+.darktheme .horizontal #tiy_btn_stack a	{background: transparent url("/ui2019/tiy-bg.png") -65px -375px no-repeat;}
+.darktheme .horizontal #tiy_btn_stack a:hover	{background: transparent url("/ui2019/tiy-bg.png") -65px -300px no-repeat;}
+
+#tiy_btn_theme a	{background: transparent url("/ui2019/tiy-bg.png") -130px 0 no-repeat;}
+#tiy_btn_theme a:hover	{background: transparent url("/ui2019/tiy-bg.png") -130px -75px no-repeat;}
+.darktheme #tiy_btn_theme a	{background: transparent url("/ui2019/tiy-bg.png") -130px -150px no-repeat;}
+.darktheme #tiy_btn_theme a:hover	{background: transparent url("/ui2019/tiy-bg.png") -130px -225px no-repeat;}
+
+#tiy_btn_tryit a	{background: transparent url("/ui2019/tiy-bg.png") -195px 0 no-repeat;}
+#tiy_btn_tryit a:hover	{background: transparent url("/ui2019/tiy-bg.png") -195px -75px no-repeat;}
+
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2) { 
+
+    div#navfirst ul#menu
+            {
+            height: 55px;
+            width: 1210px;
+            background: transparent;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            background-size: auto 550px;
+            }
+
+    div#navfirst ul#menu li
+            {
+            margin:0;
+            padding:0;
+            list-style:none;
+            position:absolute;
+            top:0;
+            }
+
+    ul#menu li,ul#menu a
+            {
+            display: block;
+            height: 55px;
+            border-bottom:0;
+            }
+
+    div#navfirst ul#menu li a
+            {
+            /* text-indent: -9999px; */
+            overflow:hidden;
+            text-decoration: none;
+            }
+
+    #tiy_btn_index	{left:0;width:65px;}
+    #tiy_btn_stack	{left:65px;width:65px;}
+    #tiy_btn_theme	{left:130px;width:65px;}
+    #tiy_btn_tryit	{left:195px;width:150px;}
+
+
+    #tiy_btn_index a	{
+        background: transparent url("/ui2019/tiy-bg-retina.png") 0 0 no-repeat;
+        background-size: auto 550px;
+        }
+
+    #tiy_btn_index a:hover	{
+        background: transparent url("/ui2019/tiy-bg-retina.png") 0 -75px no-repeat;
+        background-size: auto 550px;
+        }
+
+    .darktheme #tiy_btn_index a	{
+        background: transparent url("/ui2019/tiy-bg-retina.png") 0px -150px no-repeat;
+        background-size: auto 550px;
+        }
+
+    .darktheme #tiy_btn_index a:hover	{
+        background: transparent url("/ui2019/tiy-bg-retina.png") 0px -75px no-repeat;
+        background-size: auto 550px;
+        }
+
+
+    #tiy_btn_stack a	{
+        background: transparent url("/ui2019/tiy-bg-retina.png") -65px 0 no-repeat;
+        background-size: auto 550px;
+        }
+
+    #tiy_btn_stack a:hover	{
+        background: transparent url("/ui2019/tiy-bg-retina.png") -65px -75px no-repeat;
+        background-size: auto 550px;
+        }
+
+    .darktheme #tiy_btn_stack a	{
+        background: transparent url("/ui2019/tiy-bg-retina.png") -65px -150px no-repeat;
+        background-size: auto 550px;
+        }
+
+    .darktheme #tiy_btn_stack a:hover	{
+        background: transparent url("/ui2019/tiy-bg-retina.png") -65px -75px no-repeat;
+        background-size: auto 550px;
+        }
+
+    .horizontal #tiy_btn_stack a	{
+        background: transparent url("/ui2019/tiy-bg-retina.png") -65px -225px no-repeat;
+        background-size: auto 550px;
+        }
+
+    .horizontal #tiy_btn_stack a:hover	{
+        background: transparent url("/ui2019/tiy-bg-retina.png") -65px -300px no-repeat;
+        background-size: auto 550px;
+        }
+
+    .darktheme .horizontal #tiy_btn_stack a	{
+        background: transparent url("/ui2019/tiy-bg-retina.png") -65px -375px no-repeat;
+        background-size: auto 550px;
+        }
+
+    .darktheme .horizontal #tiy_btn_stack a:hover	{
+        background: transparent url("/ui2019/tiy-bg-retina.png") -65px -300px no-repeat;
+        background-size: auto 550px;
+        }
+
+
+    #tiy_btn_theme a	{
+        background: transparent url("/ui2019/tiy-bg-retina.png") -130px 0 no-repeat;
+        background-size: auto 550px;
+        }
+
+    #tiy_btn_theme a:hover	{
+        background: transparent url("/ui2019/tiy-bg-retina.png") -130px -75px no-repeat;
+        background-size: auto 550px;
+        }
+
+    .darktheme #tiy_btn_theme a	{
+        background: transparent url("/ui2019/tiy-bg-retina.png") -130px -150px no-repeat;
+        background-size: auto 550px;
+        }
+
+    .darktheme #tiy_btn_theme a:hover	{
+        background: transparent url("/ui2019/tiy-bg-retina.png") -130px -225px no-repeat;
+        background-size: auto 550px;
+        }
+
+
+    #tiy_btn_tryit a	{
+        background: transparent url("/ui2019/tiy-bg-retina.png") -195px 0 no-repeat;
+        background-size: auto 550px;
+        }
+
+    #tiy_btn_tryit a:hover	{
+        background: transparent url("/ui2019/tiy-bg-retina.png") -195px -75px no-repeat;
+        background-size: auto 550px;
+        }
+}
+
+
+#container {
+  background-color:#f7f7f7;
+  width:100%;
+  overflow:auto;
+  position:absolute;
+  top:149px;
+  bottom:0px;
+  height:auto;
+  border: 0px solid #000000;
+  clear: both;
+}
+
+#textareacontainer, #iframecontainer {
+  float:left;
+  height:100%;
+  width:50%;
+  border: 0px solid #bbb;
+}
+
+#textarea, #iframe {
+  height:100%;
+  width:100%;
+  padding-bottom:10px;
+  padding-top:1px;
+  border: 0px solid green;
+}
+
+#textarea {
+  padding-left:10px;
+  padding-right:5px;  
+}
+
+#iframe {
+  padding-left:5px;
+  padding-right:10px;  
+}
+
+#textareawrapper {
+  width:100%;
+  height:100%;
+  background-color: #ffffff;
+  position:relative;
+  box-shadow:0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+#iframewrapper {
+  width:100%;
+  height:100%;
+  -webkit-overflow-scrolling: touch;
+  background-color: #ffffff;
+  box-shadow:0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+#textareaCode {
+  background-color: #ffffff;
+  font-family: consolas,"courier new",monospace;
+  font-size:35px;
+  height:100%;
+  width:100%;
+  padding:8px;
+  resize: none;
+  line-height:normal;  
+  overflow:auto;
+  word-wrap:break-word;
+}
+
+.CodeMirror.cm-s-default {
+  line-height:normal;
+  padding:4px;
+  height:100%;
+  width:100%;
+}
+
+#iframeResult, #iframeSource {
+  background-color: #ffffff;
+  height:100%;
+  width:100%;
+}
+
+#textareacontainer.horizontal,#iframecontainer.horizontal{
+  height:50%;
+  float:none;
+  width:100%;
+}
+#textarea.horizontal{
+  height:100%;
+  padding-left:10px;
+  padding-right:10px;
+}
+#iframe.horizontal{
+  height:100%;
+  padding-right:10px;
+  padding-bottom:10px;
+  padding-left:10px;  
+}
+#container.horizontal{
+  min-height:200px;
+  margin-left:0;
+}
+
+body.darktheme {
+  background-color:rgb(40, 44, 52);
+}
+body.darktheme #tiy_header, body.darktheme #tiy_logo{
+  background-color:rgb(40, 44, 52);
+}
+body.darktheme #navfirst{
+  background-color:#353940;
+  color:#dddddd;
+}
+body.darktheme #container {
+  background-color:#353940;
+}
+body.darktheme #navfirst a {
+  color:#dddddd;
+}
+body.darktheme ::-webkit-scrollbar {width:12px;height:3px;}
+body.darktheme ::-webkit-scrollbar-track-piece {background-color:#000;}
+body.darktheme ::-webkit-scrollbar-thumb {height:50px;background-color: #616161;}
+body.darktheme ::-webkit-scrollbar-thumb:hover {background-color: #aaaaaa;}
+
+
+	/* ----------------------------------- header ----------------------------------- */
+div#tiy_header
+		{
+		margin: 0;
+		padding: 0;
+		border: 0;
+		width: 100%;
+		height: 94px;
+		background-color:#fdfcf8;
+		}
+
+div#tiy_logo
+		{
+		margin: 0 auto;
+		padding: 0;
+		border: 0;
+		width: 1200px;
+		height: 94px;
+		background-color:#fdfcf8;
+		}
+
+div#sp_tiy {
+        width: 728px;
+		height: 94px;
+        float: right;
+        }
+
+div#tiy_header  a, div#tiy_header  h1
+		{
+		/* text-indent: -9999px; */
+		margin: 0 0 0 12px;
+		padding: 0;
+		border: 0;
+		overflow:hidden;
+		float:left;
+		}
+
+div#tiy_header  a:link, div#tiy_header  a:visited, div#tiy_header  h1
+		{
+		display: block;	
+		width: 357px;
+		height: 94px;
+		background : transparent url("/ui2019/tiy-bg.png") -225px -450px no-repeat;
+		margin: 0;
+		padding: 0;
+		}
+
+.darktheme div#tiy_header  a:link, .darktheme div#tiy_header  a:visited, .darktheme div#tiy_header  h1
+		{
+		background : transparent url("/ui2019/tiy-bg.png") -225px -350px no-repeat;
+		}
+
+div#tiy_header  a:hover
+		{
+		background: transparent url("/ui2019/tiy-logo.png") no-repeat;
+		}
+
+div#tiy_header  a:hover
+		{
+		background: transparent url("/ui2019/tiy-logo.png") 0 -250px no-repeat;
+		}
+
+
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2) { 
+
+div#tiy_header  a:link, div#tiy_header  a:visited, div#tiy_header  h1
+		{
+		display: block;	
+		width: 357px;
+		height: 94px;
+		background : transparent url("/ui2019/tiy-bg-retina.png") -225px -450px no-repeat;
+		margin: 0;
+		padding: 0;
+        background-size: auto 550px;
+		}
+
+
+.darktheme div#tiy_header  a:link, .darktheme div#tiy_header  a:visited, .darktheme div#tiy_header  h1
+		{
+		display: block;	
+		width: 357px;
+		height: 94px;
+		background : transparent url("/ui2019/tiy-bg-retina.png") -225px -350px no-repeat;
+		margin: 0;
+		padding: 0;
+        background-size: auto 550px;
+		}
+
+}
+
+
+
+div#divResult, div#divResult pre {
+        background-color: #000000;
+        color:#ffffff;
+        font-family: consolas,"courier new",monospace;  
+        height:100%;
+        width:100%;  
+        padding:8px;
+}

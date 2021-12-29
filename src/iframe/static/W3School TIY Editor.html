@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://www.w3school.com.cn/tiy/t.asp?f=css_index -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>W3School TIY Editor</title>
+
+<link rel="stylesheet" href="./W3School TIY Editor_files/css-tiy-basic.css">
+<link rel="stylesheet" href="./W3School TIY Editor_files/codemirror.css">
+<script src="./W3School TIY Editor_files/f(4).txt"></script><script src="./W3School TIY Editor_files/f(5).txt"></script><script type="text/javascript" async="" src="./W3School TIY Editor_files/analytics.js"></script><script src="./W3School TIY Editor_files/f(6).txt" id="google_shimpl"></script><script src="./W3School TIY Editor_files/codemirror.js"></script>
+<script src="./W3School TIY Editor_files/codemirror_jsx.js"></script>
+<script src="./W3School TIY Editor_files/htmlmixed.js"></script>
+<script src="./W3School TIY Editor_files/xml.js"></script>
+<script src="./W3School TIY Editor_files/javascript.js"></script>
+<script src="./W3School TIY Editor_files/css.js"></script>
+<script src="./W3School TIY Editor_files/clike.js"></script>
+
+
+<link href="./W3School TIY Editor_files/css(1)" rel="stylesheet">
+
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.w3school.com.cn/ui2019/logo-16-red.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.w3school.com.cn/ui2019/logo-32-red.png">
+<link rel="icon" type="image/png" sizes="48x48" href="https://www.w3school.com.cn/ui2019/logo-48-red.png">
+<link rel="icon" type="image/png" sizes="96x96" href="https://www.w3school.com.cn/ui2019/logo-96-red.png">
+<link rel="apple-touch-icon-precomposed" sizes="180x180" href="https://www.w3school.com.cn/ui2019/logo-180.png">
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="./W3School TIY Editor_files/js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-878633-1');
+</script>
+
+<!--[if lt IE 8]>
+<style>
+#textareacontainer, #iframecontainer {width:48%;}
+#container {height:500px;}
+#textarea, #iframe {width:90%;height:450px;}
+#textareaCode, #iframeResult {height:450px;}
+.stack {display:none;}
+</style>
+<![endif]-->
+<meta http-equiv="origin-trial" content="AxujKG9INjsZ8/gUq8+dTruNvk7RjZQ1oFhhgQbcTJKDnZfbzSTE81wvC2Hzaf3TW4avA76LTZEMdiedF1vIbA4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="Azuce85ORtSnWe1MZDTv68qpaW3iHyfL9YbLRy0cwcCZwVnePnOmkUJlG8HGikmOwhZU22dElCcfrfX2HhrBPAkAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A16nvcdeoOAqrJcmjLRpl1I6f3McDD8EfofAYTt/P/H4/AWwB99nxiPp6kA0fXoiZav908Z8etuL16laFPUdfQsAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AxBHdr0J44vFBQtZUqX9sjiqf5yWZ/OcHRcRMN3H9TH+t90V/j3ENW6C8+igBZFXMJ7G3Pr8Dd13632aLng42wgAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A88BWHFjcawUfKU3lIejLoryXoyjooBXLgWmGh+hNcqMK44cugvsI5YZbNarYvi3roc1fYbHA1AVbhAtuHZflgEAAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjUyNzc0NDAwLCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A8FHS1NmdCwGqD9DwOicnHHY+y27kdWfxKa0YHSGDfv0CSpDKRHTQdQmZVPDUdaFWUsxdgVxlwAd6o+dhJykPA0AAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A8zdXi6dr1hwXEUjQrYiyYQGlU3557y5QWDnN0Lwgj9ePt66XMEvNkVWOEOWPd7TP9sBQ25X0Q15Lr1Nn4oGFQkAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A4/Htern2udN9w3yJK9QgWQxQFruxOXsXL7cW60DyCl0EZFGCSme/J33Q/WzF7bBkVvhEWDlcBiUyZaim5CpFQwAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><link rel="preload" href="./W3School TIY Editor_files/f(7).txt" as="script"><script type="text/javascript" src="./W3School TIY Editor_files/f(7).txt"></script><link rel="preload" href="./W3School TIY Editor_files/f(8).txt" as="script"><script type="text/javascript" src="./W3School TIY Editor_files/f(8).txt"></script><link rel="preload" href="./W3School TIY Editor_files/f(7).txt" as="script"><script type="text/javascript" src="./W3School TIY Editor_files/f(7).txt"></script><link rel="preload" href="./W3School TIY Editor_files/f(8).txt" as="script"><script type="text/javascript" src="./W3School TIY Editor_files/f(8).txt"></script></head>
+
+
+<body aria-hidden="false">
+
+
+<div id="tiy_header">
+<div id="tiy_logo">
+<h1><a href="https://www.w3school.com.cn/index.html" title="W3School TIY Editor" style="float:left;">W3School TIY Editor</a></h1>
+
+<div id="sp_tiy">
+<script async="" src="./W3School TIY Editor_files/f(9).txt"></script>
+<!-- W3 页眉 TIY -->
+<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-3381531532877742" data-ad-slot="7947784850" data-adsbygoogle-status="done" data-ad-status="filled"><ins id="aswift_0_expand" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 90px; width: 728px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_0_anchor" style="border: none; height: 90px; width: 728px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"><iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:728px;height:90px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="728" height="90" frameborder="0" src="./W3School TIY Editor_files/ads.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" allow="attribution-reporting" data-google-container-id="a!1" data-google-query-id="CL7p9u20iPUCFQLmvAodBlMN7A" data-load-complete="true"></iframe></ins></ins></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div>
+</div>
+
+
+<div id="navfirst">
+<ul id="menu">
+<li id="tiy_btn_index"><a href="https://www.w3school.com.cn/index.html" title="W3School 在线教程">W3School 在线教程</a></li>
+<li id="tiy_btn_stack"><a href="javascript:void(0);" onclick="restack(currentStack)" title="更改方向">改变方向</a></li>
+<li id="tiy_btn_theme"><a href="javascript:void(0);" onclick="retheme()" title="更改主题">暗黑模式</a></li>
+<li id="tiy_btn_tryit" style="background: red; color: #fff;"><a onclick="submitTryit()" title="更改主题">运行代码</a></li>
+</ul>
+</div>
+
+
+<div id="container">
+
+    <div id="textareacontainer">
+        <div id="textarea">
+            <div id="textareawrapper">
+
+<textarea autocomplete="off" id="textareaCode" wrap="logical" spellcheck="false" style="display: none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+body {
+  background-color: lightblue;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+p {
+  font-family: verdana;
+  font-size: 20px;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h1&gt;我的第一个 CSS 实例&lt;/h1&gt;
+&lt;p&gt;这是一个段落。&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</textarea><div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 144px; left: 44.0312px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div><div class="CodeMirror-vscrollbar" cm-not-content="true" style="width: 18px; pointer-events: none; bottom: 0px;"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" cm-not-content="true" style="height: 18px; pointer-events: none;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 30px; min-height: 475px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors" style="visibility: hidden;"><div class="CodeMirror-cursor" style="left: 40.0312px; top: 136px; height: 17px;">&nbsp;</div></div><div class="CodeMirror-code" style=""><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-xml cm-meta">&lt;!DOCTYPE html&gt;</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-xml cm-tag cm-bracket">&lt;</span><span class="cm-m-xml cm-tag">html</span><span class="cm-m-xml cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-xml cm-tag cm-bracket">&lt;</span><span class="cm-m-xml cm-tag">head</span><span class="cm-m-xml cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-xml cm-tag cm-bracket">&lt;</span><span class="cm-m-xml cm-tag">style</span><span class="cm-m-xml cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-css cm-tag">body</span><span class="cm-m-css"> {</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-css"> &nbsp;</span><span class="cm-m-css cm-property">background-color</span><span class="cm-m-css">: </span><span class="cm-m-css cm-keyword">lightblue</span><span class="cm-m-css">;</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-css">}</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-css cm-tag">h1</span><span class="cm-m-css"> {</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-css"> &nbsp;</span><span class="cm-m-css cm-property">color</span><span class="cm-m-css">: </span><span class="cm-m-css cm-keyword">white</span><span class="cm-m-css">;</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-css"> &nbsp;</span><span class="cm-m-css cm-property">text-align</span><span class="cm-m-css">: </span><span class="cm-m-css cm-atom">left</span><span class="cm-m-css">;</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-css">}</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-css cm-tag">p</span><span class="cm-m-css"> {</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-css"> &nbsp;</span><span class="cm-m-css cm-property">font-family</span><span class="cm-m-css">: </span><span class="cm-m-css cm-variable">verdana</span><span class="cm-m-css">;</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-css"> &nbsp;</span><span class="cm-m-css cm-property">font-size</span><span class="cm-m-css">: </span><span class="cm-m-css cm-number">20px</span><span class="cm-m-css">;</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-css">}</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-xml cm-tag cm-bracket">&lt;/</span><span class="cm-m-xml cm-tag">style</span><span class="cm-m-xml cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-xml cm-tag cm-bracket">&lt;/</span><span class="cm-m-xml cm-tag">head</span><span class="cm-m-xml cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-xml cm-tag cm-bracket">&lt;</span><span class="cm-m-xml cm-tag">body</span><span class="cm-m-xml cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-xml cm-tag cm-bracket">&lt;</span><span class="cm-m-xml cm-tag">h1</span><span class="cm-m-xml cm-tag cm-bracket">&gt;</span><span class="cm-m-xml">我的第一个 CSS 实例</span><span class="cm-m-xml cm-tag cm-bracket">&lt;/</span><span class="cm-m-xml cm-tag">h1</span><span class="cm-m-xml cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-xml cm-tag cm-bracket">&lt;</span><span class="cm-m-xml cm-tag">p</span><span class="cm-m-xml cm-tag cm-bracket">&gt;</span><span class="cm-m-xml">这是一个段落。</span><span class="cm-m-xml cm-tag cm-bracket">&lt;/</span><span class="cm-m-xml cm-tag">p</span><span class="cm-m-xml cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-xml cm-tag cm-bracket">&lt;/</span><span class="cm-m-xml cm-tag">body</span><span class="cm-m-xml cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span class="cm-m-xml cm-tag cm-bracket">&lt;/</span><span class="cm-m-xml cm-tag">html</span><span class="cm-m-xml cm-tag cm-bracket">&gt;</span></span></pre><pre class=" CodeMirror-line "><span style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 30px; width: 1px; border-bottom: 0px solid transparent; top: 475px;"></div><div class="CodeMirror-gutters" style="display: none; height: 505px;"></div></div></div>
+            </div>
+        </div>
+    </div>
+        <form id="codeForm" autocomplete="off" style="margin:0px;display:none;" action="https://www.w3school.com.cn/tiy/v.asp" method="post" accept-charset="utf-8" target="iframeResult">
+          <input type="hidden" name="code" id="code" value="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+body {
+  background-color: lightblue;
+}
+
+h1 {
+  color: white;
+  text-align: left;
+}
+
+p {
+  font-family: verdana;
+  font-size: 20px;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h1&gt;我的第一个 CSS 实例&lt;/h1&gt;
+&lt;p&gt;这是一个段落。&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+">
+        </form>
+    <div id="iframecontainer">
+        <div id="iframe">
+            <div id="iframewrapper"><iframe frameborder="0" id="iframeResult" name="iframeResult" src="./W3School TIY Editor_files/saved_resource(1).html"></iframe></div>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="./W3School TIY Editor_files/submitTryit.js"></script>
+
+
+<script>
+function colorcoding() {
+  var ua = navigator.userAgent;
+  //Opera Mini refreshes the page when trying to edit the textarea.
+  if (ua && ua.toUpperCase().indexOf("OPERA MINI") > -1) { return false; }
+  window.editor = CodeMirror.fromTextArea(document.getElementById("textareaCode"), {
+    mode: 'text/html',
+    htmlMode: true,
+    lineWrapping: true,
+    smartIndent: false,
+    addModeClass: true
+  });
+//  window.editor.on("change", function () {window.editor.save();});
+}
+colorcoding();
+</script>
+
+
+<script>
+var currentStack=true;
+if ((window.screen.availWidth <= 768 && window.innerHeight > window.innerWidth) || "" == " horizontal") {restack(true);}
+function restack(vertical) {
+    var tc, ic, t, i, c, n, f, sv, sh, d, height, flt, width;
+    tc = document.getElementById("textareacontainer");
+    ic = document.getElementById("iframecontainer");
+    t = document.getElementById("textarea");
+    i = document.getElementById("iframe");
+    c = document.getElementById("container");
+    n = document.getElementById("navfirst");
+    //sv = document.getElementById("stackV");
+    //sh = document.getElementById("stackH");
+    tc.className = tc.className.replace("horizontal", "");
+    ic.className = ic.className.replace("horizontal", "");
+    t.className = t.className.replace("horizontal", "");
+    i.className = i.className.replace("horizontal", "");
+    c.className = c.className.replace("horizontal", "");
+    n.className = n.className.replace("horizontal", "");
+    //if (sv) {sv.className = sv.className.replace("horizontal", "")};
+    //if (sv) {sh.className = sh.className.replace("horizontal", "")};
+    //stack = "";
+    if (vertical) {
+        tc.className = tc.className + " horizontal";
+        ic.className = ic.className + " horizontal";        
+        t.className = t.className + " horizontal";        
+        i.className = i.className + " horizontal";
+        c.className = c.className + " horizontal";
+        n.className = n.className + " horizontal";
+        //if (sv) {sv.className = sv.className + " horizontal"};
+        //if (sv) {sh.className = sh.className + " horizontal"};
+        //stack = " horizontal";
+        document.getElementById("textareacontainer").style.height = "50%";
+        document.getElementById("iframecontainer").style.height = "50%";
+        document.getElementById("textareacontainer").style.width = "100%";
+        document.getElementById("iframecontainer").style.width = "100%";
+        currentStack=false;
+    } else {
+        document.getElementById("textareacontainer").style.height = "100%";
+        document.getElementById("iframecontainer").style.height = "100%";
+        document.getElementById("textareacontainer").style.width = "50%";
+        document.getElementById("iframecontainer").style.width = "50%";
+        currentStack=true;        
+    }
+}
+</script>
+
+
+<script>
+function retheme() {
+  var cc = document.body.className;
+  if (cc.indexOf("darktheme") > -1) {
+    document.body.className = cc.replace("darktheme", "");
+  } else {
+    document.body.className += " darktheme";
+  }
+}
+</script>
+
+
+
+<ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;" data-ad-status="unfilled"><ins id="aswift_1_expand" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_1_anchor" style="border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"><iframe id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" src="./W3School TIY Editor_files/ads(1).html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" allow="attribution-reporting" data-google-container-id="a!2" data-load-complete="true"></iframe></ins></ins></ins><iframe src="./W3School TIY Editor_files/aframe.html" width="0" height="0" style="display: none;"></iframe></body><iframe id="google_esf" name="google_esf" src="./W3School TIY Editor_files/zrt_lookup.html" style="display: none;"></iframe><ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important; width: 100vw !important; height: 100vh !important; inset: 0px auto auto 0px !important; clear: none !important; float: none !important; margin: 0px !important; max-height: none !important; max-width: none !important; opacity: 1 !important; overflow: visible !important; padding: 0px !important; position: fixed !important; vertical-align: baseline !important; visibility: visible !important; z-index: 2147483647 !important; background: transparent !important;" aria-hidden="true" data-ad-status="filled" data-vignette-loaded="true"><ins id="aswift_2_expand" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none !important; height: 100vh !important; width: 100vw !important; margin: 0px !important; padding: 0px !important; position: relative !important; visibility: visible !important; background-color: transparent !important; display: inline-table !important; inset: auto !important; clear: none !important; float: none !important; max-height: none !important; max-width: none !important; opacity: 1 !important; overflow: visible !important; vertical-align: baseline !important; z-index: auto !important;"><ins id="aswift_2_anchor" style="border: none !important; height: 100vh !important; width: 100vw !important; margin: 0px !important; padding: 0px !important; position: relative !important; visibility: visible !important; background-color: transparent !important; display: block !important; inset: auto !important; clear: none !important; float: none !important; max-height: none !important; max-width: none !important; opacity: 1 !important; overflow: visible !important; vertical-align: baseline !important; z-index: auto !important;"><iframe id="aswift_2" name="" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="" height="" frameborder="0" src="./W3School TIY Editor_files/zrt_lookup(1).html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" allow="attribution-reporting" data-google-container-id="a!3" data-google-query-id="CMf49-20iPUCFbdDwgUdbBMH8Q" data-load-complete="true" style="width: 100vw !important; height: 100vh !important; inset: 0px auto auto 0px !important; position: absolute !important; clear: none !important; display: inline !important; float: none !important; margin: 0px !important; max-height: none !important; max-width: none !important; opacity: 1 !important; overflow: visible !important; padding: 0px !important; vertical-align: baseline !important; visibility: visible !important; z-index: auto !important;"></iframe></ins></ins></ins></html>
