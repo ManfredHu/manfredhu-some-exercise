@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    方法一 display: block + margin: auto
+    <div style="width: 100%">
+      <img
+        style="display: block; margin: auto"
+        src="https://manfredhu-1252588796.cos.ap-guangzhou.myqcloud.com/manfredhu.jpeg"
+        alt=""
+      />
+    </div>
+
+    方法二 text-align
+    <div style="width: 100%; text-align: center">
+      <img
+        style="display: inline-block"
+        src="https://manfredhu-1252588796.cos.ap-guangzhou.myqcloud.com/manfredhu.jpeg"
+        alt=""
+      />
+    </div>
+
+    方法三 absolute + 图片宽度
+    <!-- <div style="width: 100%; position: relative;">
+      <img
+        style="display: inline-block; position: absolute; top: 50%; left: 50%"
+        src="https://manfredhu-1252588796.cos.ap-guangzhou.myqcloud.com/manfredhu.jpeg"
+        alt=""
+      />
+    </div> -->
+  </body>
+</html>
