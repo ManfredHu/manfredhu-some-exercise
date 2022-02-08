@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebWorker</title>
+  </head>
+  <body>
+    <script>
+      var worker = new Worker("./work.js");
+      // console.log(`worker`, worker)
+      // // 向woker发送信息
+      // // worker.postMessage("Hello World");
+      // worker.postMessage({ cmd: "start", msg: ["Work"] });
+      // console.log(`发送message完成`)
+
+      // // 接收work的消息
+      // worker.onmessage = function (event) {
+      //   console.log("Received message " + event.data);
+      //   // doSomething();
+      // };
+
+      // // function doSomething() {
+      // //   // 执行任务
+      // //   worker.postMessage("Work done!");
+      // // }
+      // console.log(`worker终止`)
+      // worker.postMessage({ cmd: "stop", msg: ["Work"] });
+
+      // // worker.terminate();
+      // setTimeout(() => {
+      //   console.log(`worker`, worker)
+      // }, 2000)
+
+      // var uInt8Array = new Uint8Array(new ArrayBuffer(10));
+      // for (var i = 0; i < uInt8Array.length; ++i) {
+      //   uInt8Array[i] = i * 2; // [0, 2, 4, 6, 8,...]
+      // }
+      // worker.postMessage(uInt8Array, [uInt8Array]);
+
+      var ab = new ArrayBuffer(1);
+        console.log(`222ab`, ab);
+
+      worker.postMessage(ab, [ab]);
+      setTimeout(() => {
+        console.log(`123ab`, ab);
+      }, 2000);
+    </script>
+  </body>
+</html>

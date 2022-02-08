@@ -12,7 +12,8 @@
   </div>
   <script>
     document.addEventListener('click', e => {
-      const listener = e.target.closest('[on:click]')
+      debugger
+      const listener = e.target.closest('div[on:click]')
       // 拿到路径，获取url，动态加载后执行
       if (listener) {
         // debugger
