@@ -5,8 +5,9 @@
     "module": "esnext",
     "target": "esnext",
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "experimentalDecorators": true,
-    "noImplicitThis": true,
+    "strict": true,
     "lib": [
       "dom",
       "es6",

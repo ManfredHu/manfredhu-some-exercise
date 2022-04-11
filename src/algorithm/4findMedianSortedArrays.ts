@@ -50,11 +50,3 @@ function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
 };
 
 findMedianSortedArrays([1,2], [3,4])
-
-var timer; // 维护同一个timer
-function debounce(fn, delay) {
-    clearTimeout(timer);
-    timer = setTimeout(function(){
-        fn();
-    }, delay);
-}
