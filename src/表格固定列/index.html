@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+      div {
+        overflow: auto;
+        width: 400px;
+        height: 290px;
+        /* 固定高度 */
+        border: 1px solid gray;
+        border-bottom: 0;
+        border-right: 0;
+      }
+
+      td,
+      th {
+        border-right: 1px solid gray;
+        border-bottom: 1px solid gray;
+
+        width: 100px;
+
+        height: 30px;
+
+        box-sizing: border-box;
+      }
+
+      th {
+        background-color: lightblue;
+      }
+
+      td {
+        text-align: center;
+      }
+
+      table {
+        border-collapse: collapse;
+        table-layout: fixed;
+        width: 100%;
+        /* 固定寬度 */
+      }
+
+      td:first-child, th:first-child {
+        position: sticky;
+
+        left: 0;
+        /* 首行在左 */
+
+        z-index: 1;
+
+        background-color: lightpink;
+      }
+
+      td:nth-child(2), th:nth-child(2) {
+        background: green;
+        position: sticky;
+
+        left: 100px;
+        /* 首行在左 */
+
+        z-index: 1;
+      }
+
+      /* thead tr th {
+
+      position:sticky;
+
+      top:0;
+
+    } */
+
+      /* th:first-child {
+        z-index: 2;
+
+        background-color: lightblue;
+      } */
+    </style>
+  </head>
+
+  <body>
+    <div style="margin: 20px">
+      <table cellspacing="0" border="0" cellpadding="0">
+        <thead>
+          <tr>
+            <th>1</th>
+
+            <th>2</th>
+
+            <th>3</th>
+
+            <th>4</th>
+
+            <th>5</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>11</td>
+            <td>12</td>
+            <td>12</td>
+            <td>14</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <td>21</td>
+            <td>22</td>
+            <td>23</td>
+            <td>24</td>
+            <td>25</td>
+          </tr>
+
+          <tr>
+            <td>33</td>
+            <td>34</td>
+            <td>35</td>
+            <td>36</td>
+            <td>37</td>
+          </tr>
+          <tr>
+            <td>44</td>
+            <td>44</td>
+            <td>44</td>
+            <td>44</td>
+            <td>44</td>
+          </tr>
+
+          <tr>
+            <td>55</td>
+            <td>55</td>
+            <td>55</td>
+            <td>55</td>
+            <td>55</td>
+          </tr>
+          <tr>
+            <td>66</td>
+            <td>66</td>
+            <td>66</td>
+            <td>66</td>
+            <td>66</td>
+          </tr>
+
+          <tr>
+            <td>77</td>
+            <td>77</td>
+            <td>77</td>
+            <td>77</td>
+            <td>77</td>
+          </tr>
+          <tr>
+            <td>88</td>
+            <td>88</td>
+            <td>88</td>
+            <td>88</td>
+            <td>88</td>
+          </tr>
+
+          <tr>
+            <td>99</td>
+            <td>99</td>
+            <td>99</td>
+            <td>99</td>
+            <td>99</td>
+          </tr>
+          <tr>
+            <td>100</td>
+            <td>100</td>
+            <td>100</td>
+            <td>100</td>
+            <td>100</td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

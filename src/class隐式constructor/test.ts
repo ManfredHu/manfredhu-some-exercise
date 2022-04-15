@@ -7,3 +7,9 @@ class Foo {
 }
 
 console.log(new Foo('manfred', 'hu', 'manfredhufe@gmail.com'))
+
+// Foo {
+//   firstName: 'manfred',
+//   lastName: 'hu',
+//   email: 'manfredhufe@gmail.com'
+// }
