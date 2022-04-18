@@ -1,0 +1,11 @@
+<html>
+  <head>
+  <script>
+    window.onerror = function(message){  // 捕获浏览器错误行为
+        // alert("错误原因：" + arguments[0] + "\n错误URL: " +  arguments[1] + "\n错误行号: " + arguments[2]);
+        return true;  // 禁止浏览器显示标准出错信息
+    }
+    a.innerHTML = "";  // 制造错误机会
+  </script>
+  </head>
+</html>
