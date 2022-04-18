@@ -25,6 +25,8 @@
     "koa-router": "^10.1.1",
     "koa-send": "^5.0.1",
     "lodash-es": "^4.17.21",
+    "source-map": "^0.7.3",
+    "stacktracey": "^2.1.8",
     "ws": "^8.3.0"
   }
 }
