@@ -45,7 +45,7 @@
  * }
  */
 
- var levelOrder = function(root) {
+const levelOrder = function(root) {
   if (!root) return []
   const ret = [] // 最后结果
   const q = [] // 每一层的临时结果

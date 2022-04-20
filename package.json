@@ -6,15 +6,23 @@
   "main": "test.js",
   "scripts": {
     "dev": "rm -rf ./dist/src/ && nodemon --exec 'tsc'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint src --ext .ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
+    "customize-cra": "^1.0.0",
+    "eslint": "^8.13.0",
+    "eslint-config-alloy": "^4.5.1",
     "nodemon": "^2.0.13",
+    "prettier": "^2.6.2",
+    "react-app-rewired": "^2.2.1",
     "ts-node": "^10.2.1",
-    "typescript": "^4.4.3"
+    "typescript": "^4.6.3"
   },
   "dependencies": {
     "@types/lodash": "^4.14.175",
