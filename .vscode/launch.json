@@ -9,7 +9,7 @@
       "type": "node",
       "request": "launch",
       "args": [
-        "${workspaceRoot}/src/4findMedianSortedArrays.ts" // 入口文件
+        "${workspaceRoot}/src/abstructClass/index.ts" // 入口文件
       ],
       "runtimeArgs": [
         "--nolazy",
