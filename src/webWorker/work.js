@@ -1,4 +1,3 @@
-
 // console.log(`self`, self)
 // self.addEventListener(
 //   "message",
@@ -34,7 +33,7 @@
 // self.close();
 
 self.onmessage = function (e) {
-  var uInt8Array = e.data;
+  const uInt8Array = e.data;
   console.log(
     `uInt8Array`,
     uInt8Array,

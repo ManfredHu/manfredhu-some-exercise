@@ -8,7 +8,7 @@
   </head>
   <body>
     <script>
-      var worker = new Worker("./work.js");
+      var worker = new Worker('./work.js');
       // console.log(`worker`, worker)
       // // 向woker发送信息
       // // worker.postMessage("Hello World");
@@ -40,7 +40,7 @@
       // worker.postMessage(uInt8Array, [uInt8Array]);
 
       var ab = new ArrayBuffer(1);
-        console.log(`222ab`, ab);
+      console.log(`222ab`, ab);
 
       worker.postMessage(ab, [ab]);
       setTimeout(() => {
