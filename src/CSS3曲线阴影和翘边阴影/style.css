@@ -1,0 +1,105 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors manfred Hu
+ * @date    2015-03-29 13:33:36
+ * @version 1.0
+ * 曲线投影原理:直角盒子的阴影和伪类的元素的阴影叠加;
+ */
+ body{
+	font-family: Arial;
+	font-size:20px;
+ }
+ body,ul{
+ 	margin:0;
+ 	padding:0;
+ 	list-style: none;
+ }
+ .wrap{
+	width:70%;
+	height:200px;
+	margin:50px auto;
+	background:#fff;
+ }
+ .wrap h1{
+	font-size:20px;
+	text-align:center;
+	line-height:200px;
+ }
+ .effect{
+ 	position:relative;/*对父元素进行相对对位以便对下面的子元素进行绝对定位*/
+ 	-webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset; /*直角阴影*/
+ 	box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
+ }
+ .effect:after,.effect:before{
+ 	content:'';
+ 	background:#f00;
+ 	position:absolute;
+ 	z-index:-1;
+ 	top:50%; /*对子元素进行上下左右绝对定位可以让浏览器自动计算出子元素的大小，四个属性都要写，否则不能显示。当然也可以设置宽和高*/
+ 	bottom:0;
+ 	left:10px;
+ 	right:10px;
+ 	-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.8);
+ 	box-shadow: 0 0 20px rgba(0,0,0,0.8);
+ 	border-radius: 100px 10px; /*水平方向的圆角半径是100，垂直方向的为10。tips:制作圆形的话高等于宽+border-radius等于高的一半*/
+ }
+ .box{
+ 	width:980px;
+ 	height:auto;
+ 	clear:both;
+ 	overflow:hidden;
+ 	margin:20px auto;
+ }
+ .box li{
+ 	width:300px;
+ 	position:relative; /*相对定位*/
+ 	height:210px;
+ 	float:left;
+ 	margin:20px 10px;
+ 	background:#fff;
+ 	border:2px solid #efefef;
+ 	-webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.27),0 0 60px rgba(0,0,0,0.1) inset;
+ 		box-shadow: 0 1px 4px rgba(0,0,0,0.27),0 0 60px rgba(0,0,0,0.1) inset;	
+ }
+ .box li img{
+ 	display: block; 
+ 	width:290px;
+ 	height:200px;
+ 	margin:5px;
+ }
+ .box li:before{
+	content:'';
+	position:absolute;
+	width:90%; /*因为要对阴影的图形进行变换,不能设置100%的宽和高*/
+	height:80%;
+	left:20px;
+	bottom:8px;
+	background:transparent;
+	/*background:#0f0;*/
+	-webkit-box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+	box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+	-webkit-transform: skew(-12deg) rotate(-4deg);
+	-ms-transform: skew(-12deg) rotate(-4deg);
+	-o-transform: skew(-12deg) rotate(-4deg);
+	transform: skew(-12deg) rotate(-4deg);
+	z-index:-2;
+ }
+ .box li:after{
+ 	content:'';
+	position:absolute;
+	width:90%; /*因为要对阴影的图形进行变换,不能设置100%的宽和高*/
+	height:80%;
+	right:20px;
+	bottom:8px;
+	background:transparent;
+	/*background: #f00;*/
+	-webkit-box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+	box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+	-webkit-transform: skew(12deg) rotate(4deg);
+	-ms-transform: skew(12deg) rotate(4deg);
+	-o-transform: skew(12deg) rotate(4deg);
+	transform: skew(12deg) rotate(4deg);
+	z-index:-2;
+ }
+
