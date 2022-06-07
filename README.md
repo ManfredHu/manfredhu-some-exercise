@@ -1,5 +1,5 @@
-# leetcode-ts
-leetcode算法
+# 一些测试
+本仓库主要是测试用，还有不适合codesandbox等线上测试的demo示例
 
 ## ts-node
 
