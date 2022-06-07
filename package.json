@@ -1,6 +1,7 @@
 {
   "type": "module",
-  "name": "ts-test",
+  "name": "manfredhu-some-exercise",
+  "private": true,
   "version": "1.0.0",
   "description": "",
   "main": "test.js",
