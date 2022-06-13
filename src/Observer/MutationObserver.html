@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="someElement">
+      <p>Some text</p>
+    </div>
+    <script>
+      let callback = (mutationList, observer) => {
+        mutationList.forEach((mutation) => {
+          console.log('callback exec: ', mutation); //发生变动的DOM节点
+
+          console.log('callback exec: ', mutation.target); //发生变动的DOM节点
+          console.log('callback exec: ', mutation.previousSibling); //前一个同级节点，如果没有则返回null。
+          console.log('callback exec: ', mutation.nextSibling); //下一个同级节点，如果没有则返回null。
+          switch (
+            mutation.type //目标元素变化类型'childList' || 'attributes' | 'characterData'
+          ) {
+            case 'childList':
+              console.log('callback exec: ', mutation.addedNodes); //新增的 DOM 节点
+              console.log('callback exec: ', mutation.removedNodes); //删除的 DOM 节点
+              break;
+            case 'attributes':
+              console.log('callback exec: ', mutation.attributeName); //被更改的属性名称，如果设置了attributeFilter，则只返回预先指定的属性。
+              console.log('callback exec: ', mutation.oldValue); //该属性之前的值，这个属性只对attribute和characterData变动有效，如果发生childList变动，则返回null。
+              break;
+          }
+        });
+      };
+      let observer = new MutationObserver(callback);
+      let targetNode = document.querySelector('#someElement');
+      let options = {
+        childList: true, //  DOM 变动类型：是否观察目标子节点添加或删除，默认为false。
+        attributes: true, //  DOM 变动类型：是否观察目标节点属性变动，默认为false。
+        characterData: false, //  DOM 变动类型：是否观察文本节点变化。无默认值
+        subtree: true // 是否观察后代节点，默认为false。
+        //注意：childList，attributes、characterData 三个属性之中，至少有一个必须为 true
+        // attributeOldValue: true, //表示观察attributes变动时，是否需要记录变动前的属性值。
+        // characterDataOldValue: true, //表示观察characterData变动时，是否需要记录变动前的值。
+        // attributeFilter: ['class','src'], //数组，表示需要观察的特定属性（比如['class','src']）。
+      };
+      observer.observe(targetNode, options); //开始观察目标元素，按照options配置指定所要观察的特定变动。
+      // observer.disconnect(); //停止观察。
+      // observer.takeRecords(); //返回所有观察目标对象数组。
+
+      setTimeout(() => {
+        document.querySelector('#someElement').innerHTML =
+          '<p>Some text</p><p>Some text</p>';
+      }, 1000)
+      setTimeout(() => {
+        document.querySelector('#someElement').setAttribute('class', 'newClass');
+      }, 3000)
+    </script>
+  </body>
+</html>
