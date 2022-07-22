@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function abc() {
+      try {
+        const a = 1123
+        throw new Error({
+          statusCode: 1006,
+          status_msg: "Unknown"
+        })
+      } catch(err) {
+        return Promise.reject(err)
+      }
+    }
+    abc()
+  </script>
+</body>
+</html>
