@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <svg width="100px" height="100px" viewBox="0 0 100 100">
+      <circle
+        r="30"
+        cx="30"
+        cy="30"
+        fill="yellowgreen"
+        stroke="red"
+        stroke-width="30"
+      />
+    </svg>
+
+    <svg width="100px" height="100px" viewBox="0 0 100 100">
+      <circle
+        r="25"
+        cx="50"
+        cy="50"
+        fill="yellowgreen"
+        stroke="#655"
+        stroke-width="50"
+        stroke-dasharray="20 10"
+      />
+    </svg>
+
+    <svg id="s1" width=140 height=140></svg>
+    <script>
+      window.onload = function () {
+        let oSvg = document.getElementById('s1');
+
+        let cx = 70,
+          cy = 70,
+          r = 70,
+          sum = 0; //初始圆心半径
+        let data = [1, 2, 3, 4]; //要画出扇形的数据
+        data.forEach((item) => {
+          //求数据总和
+          sum += item;
+        });
+        console.log('sum', sum)
+        let now = 0;
+        data.forEach((item) => {
+          //画圆
+          let ang = (360 * item) / sum;
+          pie(now, now + ang);
+          now += ang;
+        });
+        function pie(ang1, ang2) {
+          console.log('pie arguments', ang1, ang2)
+          let oPath = document.createElementNS(
+            'http://www.w3.org/2000/svg',
+            'path'
+          );
+          oPath.setAttribute('stroke', 'white');
+          oPath.setAttribute(
+            'fill',
+            `rgb(${Math.floor(Math.random() * 256)},${Math.floor(
+              Math.random() * 256
+            )},${Math.floor(Math.random() * 256)})`
+          );
+          oPath.setAttribute('stroke-width', 2);
+
+          function calcD(r) {
+            console.log('radius', r)
+            function d2a(ang) {
+              //角度转弧度
+              return (ang * Math.PI) / 180;
+            }
+            function point(ang) {
+              //根据角度求坐标
+              return {
+                x: cx + r * Math.sin(d2a(ang)),
+                y: cy - r * Math.cos(d2a(ang))
+              };
+            }
+            //画扇形的三个步骤
+            let arr = [];
+            //第一步
+            let { x: x1, y: y1 } = point(ang1);
+            arr.push(`M ${cx} ${cy} L ${x1} ${y1}`); //画第一条线
+            //第二步
+            let { x: x2, y: y2 } = point(ang2);
+            arr.push(
+              `A ${r} ${r} 0 ${ang2 - ang1 > 180 ? 1 : 0} 1 ${x2} ${y2}`
+            ); //画弧
+            //第三步
+            arr.push('Z'); //闭合
+
+            oPath.setAttribute('d', arr.join(' ')); //拼接字符串，执行绘画命令
+            oSvg.appendChild(oPath); //添加到svg中
+          }
+          //动画
+          calcD(r);
+          // let fnNext = null;
+          // let curR = r;
+          // let size = 40;
+
+          // function move(end) {
+          //   let start = curR; //起始点
+          //   let dis = end - start; //要走多远
+          //   let count = 0; //计步
+
+          //   fnNext = function () {
+          //     let a = 1 - count / size; //比率
+          //     count++; //计步走
+          //     curR = start + dis * (1 - a * a * a); //当前走到哪里
+          //     calcD(curR); //计算并画出来
+          //     if (count >= size) {
+          //       //如果走到了就停止动画
+          //       fnNext = null;
+          //     }
+          //   };
+          // }
+          // next(); //不停的走
+          // function next() {
+          //   fnNext && fnNext(); //如果走到了fnNext函数就置空，不走了，否则继续
+          //   requestAnimationFrame(next);
+          // }
+
+          // oPath.onmouseover = function () {
+          //   move(r * 1.2); //鼠标移入扇形区域变大
+          // };
+          // oPath.onmouseout = function () {
+          //   move(r); //鼠标移出扇形区域恢复
+          // };
+        }
+      };
+    </script>
+  </body>
+</html>
