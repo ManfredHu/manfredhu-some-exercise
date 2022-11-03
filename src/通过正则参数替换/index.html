@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const str = `schema://webview/?url=https%3A%2F%2Flf-source.xxx.com%2Fdownload_link.html%3F__pia_manifest__%3D%257B%2522page_name%2522%253A%2522download_link%2522%252C%2522public_path%2522%253A%2522https%253A%252F%252Flf77-gecko-source.tiktokcdn.com%252Fobj%252Fbyte-gurd-source-sg%252F10%252Fgecko%252Fresource%252C%2522nsr%2522%253Atrue%257D%26page_action_type%3D((page_action_type))%26enter_from%3D((enter_from))&container_color_auto_dark=1&hide_nav_bar=1`
+    const obj = {
+      // "page_action_type": '这是1',
+      "enter_from": '这是2'
+    }
+    const temp = str.replace(/\(\((\w+)\)\)/gi, function (match, p1, offset, string, groups) {
+      return obj[p1] ?? match
+    })
+    console.log(temp)
+  </script>
+</body>
+</html>
