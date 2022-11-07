@@ -18,5 +18,13 @@
     // "types": [
     //   // 空的
     // ]
-  }
+  },
+  "exclude": [
+    "src/algorithm/3addTwoNumbers.ts",
+    "src/algorithm/7convert.ts",
+    "src/algorithm/bfs.ts",
+    "src/promise/retry.ts",
+    "src/ts/decorator.ts",
+    "src/utils/debounce.ts"
+  ]
 }

@@ -1,4 +1,6 @@
+/* eslint-disable */
 // 2022-3-24 debounce ts版本
+
 
 // 空函数定义
 type TAnyFunction = (...args: any[]) => void

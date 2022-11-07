@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-member-accessibility */
 // https://leetcode-cn.com/problems/zigzag-conversion/
 // 6. Z 字形变换
 
@@ -52,6 +53,7 @@ function convert(s: string, numRows: number): string {
 
   for (let i = 0; i < s.length; i++) {
       // console.log(`i`, i, s.charAt(i), row)
+      // @ts-ignore
       rst[row].push(s.charAt(i))
       // console.log(`rst`, JSON.stringify(rst))
 

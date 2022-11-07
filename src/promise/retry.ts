@@ -1,11 +1,13 @@
+/* eslint-disable */
 // 接口重试
+
 
 // 并发10个请求，每个请求在返回错误码为非0时候重试3次，每次间隔2s
 // 假设错误请求示例如下
 // {ret: -1, errMsg: "not data", requestParams: 根据请求参数重新返回}
 
 // 并发请求会想到promise.all，但是如果里面的请求reject了，则promise.all会catch。重试需要用到闭包，缓存重试次数times
-type Resp = {
+interface Resp {
   ret: number,
   errMsg?: string
   requestParams: any
@@ -47,7 +49,7 @@ function sleep(delay: number) {
 }
 (async () => {
   async function getDataRetry(parasm, times, interval) {
-    console.log(`getDataRetry ${times}`, +new Date)
+    console.log(`getDataRetry ${times}`, Number(new Date))
     getData(parasm).then(res => {
       console.log(`getDataRetry res`, res)
       if (res.ret !== 0) {
