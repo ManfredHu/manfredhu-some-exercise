@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const input = {
+        bid: 'tiktok_business_suite',
+        pid: '/business-suite/',
+        view_id: '/business-suite/_1676616781935',
+        user_id: '7025547605737341958',
+        device_id: '85090984-8cf6-4650-b6fa-22afae5a76a8',
+        session_id: '05e305c8-bb4f-45d2-acb5-cbccc574d77c',
+        release: '2.0.0.69',
+        env: 'production',
+        url: 'https://www.tiktok.com/business-suite/',
+        protocol: 'https',
+        domain: 'www.tiktok.com',
+        path: '/business-suite/',
+        query: '',
+        timestamp: 1676616781935,
+        sdk_version: '0.7.2',
+        sdk_name: 'SDK_SLARDAR_WEB',
+        context: {
+        },
+        network_type: '4g',
+        sample_rate: 1
+      };
+
+      const getEntries = (o, prefix = '') => {
+        const temp = Object.entries(o);
+        return temp.flatMap(([k, v]) => {
+          if (Object(v) === v) {
+            return getEntries(v, `${prefix}${k}.`);
+          } else if (v === '') {
+            return []
+          } else {
+            return [[`${prefix}${k}`, v]];
+          }
+        });
+      };
+
+      console.log(Object.fromEntries(getEntries(input)));
+    </script>
+  </body>
+</html>

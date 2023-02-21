@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script>
+      const arr = [];
+      setTimeout(() => {
+        for (let i = 0; i < 10000; i++) {
+          arr.push('bytefish');
+        }
+      }, 3000);
+
+      const arr2 = [];
+      setTimeout(() => {
+        for (let i = 0; i < 10000; i++) {
+          arr2.push(new String('bytefish'));
+        }
+      }, 5000);
+    </script>
+  </body>
+</html>
