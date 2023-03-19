@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>WebSocket Test</title>
+</head>
+<body>
+  <script>
+    // 建立ws链接并监听各类事件
+    const socket = new WebSocket('ws://localhost:8080');
+
+    socket.addEventListener('open', function(event) {
+      console.log('WebSocket connected.');
+
+      // 发送消息
+      const message = "Hello, server.";
+      socketSend(socket, message);
+    
+      setTimeout(() => {
+        const message = "I' am ManfredHu, now is " + new Date().toLocaleString() + ".";
+        socketSend(socket, message);
+      }, 2000)
+    });
+
+    socket.addEventListener('message', function(event) {
+      console.log(`Received message: ${event.data}`);
+    });
+
+    socket.addEventListener('close', function(event) {
+      console.log(`WebSocket closed with code ${event.code} and reason '${event.reason}'.`);
+    });
+
+    socket.addEventListener('error', function(event) {
+      console.log('WebSocket error:', event);
+    });
+
+    function socketSend(socket, message) {
+      console.log(`socketSend ${new Date().toLocaleString()}: `, message)
+      socket.send(message)
+    }
+  </script>
+</body>
+</html>
