@@ -19,7 +19,7 @@ FATAL ERROR: MarkCompactCollector: young object promotion failed Allocation fail
 
 
 # old-space
-new-space.js 用来测试老生代的部分,同杨也是到4G左右崩溃
+new-space.js 用来测试老生代的部分,同样也是到4G左右崩溃
 
 区别在这里setInterval了40ms,留给new-space GC时间,所以存量内存回收都在老生代
 

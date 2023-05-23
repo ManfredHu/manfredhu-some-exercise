@@ -19,6 +19,8 @@ const showMem = () => {
 
 const perIncrement = 10 * 1024 * 1024 // 10MB
 const allTimes = 100
+
+// 每次创建perIncrement定长的Array返回
 const useMem = () => {
   const size = perIncrement
   const arr = new Array(size);
@@ -29,6 +31,7 @@ const useMem = () => {
 }
 
 let total = [];
+// 循环 allTimes 次, 每次增加useMem大小的数据到内存里
 const getTotal = () => {
   for (let j = 0; j < allTimes; j++) {
     showMem();
