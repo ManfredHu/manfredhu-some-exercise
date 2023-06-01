@@ -20,7 +20,11 @@
     hello world
     ```
 
+wiresharz抓包可以看 ./wireshark/https.pcapng 文件
+
 # http2
 `http2-server.ts`为http2 server, 通过`npx esno http2-server.ts`启动
 
 1. 浏览器打开 [https://localhost:8003/](https://localhost:8003/) 访问
+
+wiresharz抓包可以看 ./wireshark/http2.pcapng 文件
