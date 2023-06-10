@@ -8,11 +8,17 @@
   </head>
   <body>
     <script>
+      function isObject(obj) {
+        if (typeof obj === 'object' && obj !== null) {
+          return true
+        }
+        return false
+      }
       function deepClone(target) {
         const map = new Map();
         function clone(target) {
           if (isObject(target)) {
-            let cloneTarget = isArray(target) ? [] : {};
+            let cloneTarget = Array.isArray(target) ? [] : {};
             if (map.get(target)) {
               return map.get(target);
             }
@@ -34,7 +40,12 @@
         'test': 10000,
         'test2': true
       }
-      console.log(`deepClone`, deepClone())
+      const cloneObj = deepClone(temp)
+      console.log(`deepClone key 1`,  cloneObj['1'] === temp['1'])
+      console.log(`deepClone key 2`,  cloneObj['2'] === temp['2'])
+      console.log(`deepClone key 3`,  cloneObj['3'] === temp['3'])
+      console.log(`deepClone key test`,  cloneObj['test'] === temp['test'])
+      console.log(`deepClone key test2`,  cloneObj['test2'] === temp['test2'])
     </script>
   </body>
 </html>
