@@ -1,0 +1,5 @@
+--- /Users/manfredhu/Documents/manfredhu-some-exercise/src/diff-test/test1.js	2023-07-12 20:09:34
++++ /Users/manfredhu/Documents/manfredhu-some-exercise/src/diff-test/test2.js	2023-07-12 20:09:45
+@@ -1 +1,2 @@
+ this is line1
++this is line2
