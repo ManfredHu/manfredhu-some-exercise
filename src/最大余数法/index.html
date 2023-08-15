@@ -8,10 +8,7 @@
   </head>
   <body>
     <script>
-      function getPercentWithPrecision(
-        valueList,
-        precision
-      ) {
+      function getPercentWithPrecision(valueList, precision) {
         // 根据保留的小数位做对应的放大
         const digits = Math.pow(10, precision);
         const sum = valueList.reduce((total, cur) => total + cur, 0);
@@ -43,12 +40,8 @@
           let maxValue = Number.NEGATIVE_INFINITY; // 最大余额, 初始重置为无穷小
 
           // 选出这组余额数据中最大值
-          for (let i = 0; i < remainder.length; i++) {
-            if (maxValue < remainder[i]) {
-              maxValue = remainder[i];
-              maxIdx = i;
-            }
-          }
+          maxValue = Math.max(...remainder);
+          maxIdx = remainder.findIndex((j) => j === maxValue);
 
           // 对应的项席位加 1，余额清零，当前分配席位加 1
           seats[maxIdx]++;
@@ -58,7 +51,8 @@
 
         return seats.map((val) => (val * 100) / totalSeats);
       }
-      const obj = [
+      console.log(getPercentWithPrecision([5, 2], 2));
+      const genderData = [
         {
           type: 'femail',
           value: 362309
@@ -72,7 +66,8 @@
           value: 14307
         }
       ].map((j) => j.value);
-      console.log(getPercentWithPrecision(obj, 1));
+      console.log(getPercentWithPrecision(genderData, 1));
+      // [80.3, 16.5, 3.2]
     </script>
   </body>
 </html>
