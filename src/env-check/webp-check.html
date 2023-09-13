@@ -1,0 +1,29 @@
+<!-- https://codesandbox.io/s/webp-check-28xdxy?file=/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>webp check method</title>
+</head>
+
+<body>
+  <h1 id="rst"></h1>
+  <script>
+    const rst = document.querySelector('#rst')
+    function getSupportWebp() {
+      try {
+        return document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') === 0
+      } catch (err) {
+        return false
+      }
+    }
+    (async () => {
+      rst.innerHTML = `This page support webp: ${getSupportWebp()}`
+    })()
+  </script>
+</body>
+
+</html>
