@@ -1,0 +1,23 @@
+{
+  "$schema": "https://codesandbox.io/schemas/tasks.json",
+  "setupTasks": [
+    "npm i -g @nestjs/cli",
+    "npm install",
+    "npm run build"
+  ],
+  "tasks": {
+    "install-dependencies": {
+      "name": "Install Dependencies",
+      "command": "npm install"
+    },
+    "start-app": {
+      "name": "Run Dev Server",
+      "command": "npm run start",
+      "runAtStart": true,
+      "preview": {
+        "port": 3000,
+        "prLink": "devtool"
+      }
+    }
+  }
+}

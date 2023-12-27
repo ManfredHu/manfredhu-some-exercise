@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>大文件上传</title>
+    <script src="https://unpkg.com/axios@0.24.0/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <!-- 接受所有类型的文件 -->
+    <input type="file" name="uploader" id="fileInput" accept="image/*" />
+    <div id="progress"></div>
+    <h3>执行描述</h3>
+    <ol>
+      <li>利用input type=file的输入拿到File对象</li>
+      <li>
+        按照预期的chunkSize对File进行切割,
+        File是Blob的子类继承了Blob的slice方法,
+        利用FormData对象设置name=真文件名-分chunk序号, 并分批上传到服务器
+      </li>
+      <li>
+        全部chunks上传到服务器后前端发送merge请求, 服务器使用
+        fs.createReadStream 遍历读取chunk文件夹下所有chunk做合并操作
+      </li>
+      <li>
+        利用 fs.ReadStream 的 pipe 方法, 实现内存占用极小的边读边写.
+        通过fs.WriteStream的option.start控制遍历写入的位置.例如stream.pipe(fs.createWriteStream(xxx,
+        { start: 写入的位置}))
+      </li>
+      <li>
+        通过stream.on('finish', xxx)完成每个chunk文件处理进度的监听,全部处理完后返回图片url.前端加载图片显示
+      </li>
+    </ol>
+
+    <script>
+      const progress = document.getElementById('progress');
+      const fileInput = document.getElementById('fileInput');
+      const chunkSize = 100 * 1024; // 100k 为一个chunk
+
+      fileInput.onchange = async () => {
+        // 在上传文件的时候给文件名加一个随机的字符串, 同文件反复上传防止冲突
+        const randomStr = Math.random().toString().slice(2, 8);
+        const file = fileInput.files[0];
+        // file
+        // lastModified: 1671969060890
+        // lastModifiedDate: Sun Dec 25 2022 19:51:00 GMT+0800 (中国标准时间) {}
+        // name: "linda.jpeg"
+        // size: 138440
+        // type: "image/jpeg"
+        // webkitRelativePath: ""
+        const chunks = [];
+        let startPos = 0;
+        while (startPos < file.size) {
+          chunks.push(file.slice(startPos, startPos + chunkSize));
+          startPos += chunkSize;
+        }
+
+        // 任务列表
+        const tasks = [];
+        let uploaded = 0;
+        chunks.map((chunk, index) => {
+          const data = new FormData();
+          data.set('name', [randomStr, file.name + '-' + index].join('_'));
+          data.append('files', chunk);
+          // const curTasksLen = tasks.length;
+          tasks.push(
+            axios.post('http://localhost:3000/upload', data, {
+              onUploadProgress: (progressEvent) => {
+                uploaded++;
+                // const { loaded, total } = progressEvent
+                // let precentage = Math.floor((loaded * 100) / total)
+                // console.log(curTasksLen, progressEvent, precentage)
+                progress.innerText =
+                  '上传进度' + Math.floor((uploaded * 100) / tasks.length).toFixed(2) + '%';
+              },
+            }),
+          );
+        });
+        await Promise.all(tasks);
+        const resp = await axios.get(
+          'http://localhost:3000/merge?name=' +
+            [randomStr, file.name].join('_'),
+        );
+        if (resp?.data?.code === 0) {
+          const uploadedImg = document.createElement('img')
+          uploadedImg.src = resp.data.url
+          document.body.appendChild(uploadedImg)
+        }
+      };
+    </script>
+  </body>
+</html>
