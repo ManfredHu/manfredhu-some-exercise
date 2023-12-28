@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload with Progress</title>
+</head>
+<body>
+  <input type="file" id="fileInput">
+  <button onclick="uploadFile()">Upload File</button>
+  <progress id="uploadProgress" value="0" max="100"></progress>
+  <div id="status"></div>
+
+  <script>
+    async function uploadFile() {
+      const fileInput = document.getElementById('fileInput');
+      const progress = document.getElementById('uploadProgress');
+      const status = document.getElementById('status');
+
+      const file = fileInput.files[0];
+      if (!file) {
+        alert('Please select a file.');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.set('name', file.name); // 设置文件名
+      formData.append('files', file);
+
+      const controller = new AbortController();
+      const signal = controller.signal;
+
+      // Chrome 105可能支持, 可以试试
+      // https://stackoverflow.com/questions/35711724/upload-progress-indicators-for-fetch
+      // https://developer.mozilla.org/en-US/docs/Web/API/Streams_API/Using_readable_streams#consuming_a_fetch_as_a_stream
+
+      // fetch('http://localhost:3000/upload-by-fetch', {
+      //   method: 'POST',
+      //   body: formData,
+      //   signal: signal, // 将 signal 对象传递给 fetch
+      // }).then((response) => {
+      //   // 获取Stream的Reader
+      //   const reader = response.body.getReader();
+
+      //   // 这里需要服务器返回Content-Length的Response Header用于计算进度
+      //   const contentLength = +response.headers.get('Content-Length');
+      //   debugger
+      //   let loaded = 0;
+      //   function process({ done, value }) {
+      //     console.log('process exec', done, value)
+      //     if (done) {
+      //       status.innerHTML = 'Upload complete!';
+      //       return;
+      //     }
+
+      //     loaded += value.byteLength;
+      //     const percentComplete = (loaded / contentLength) * 100;
+      //     progress.value = percentComplete.toFixed(2);
+
+      //     // Continue reading the next chunk
+      //     return reader.read().then(process);
+      //   }
+      //   return reader.read().then(process)
+      // }).catch(error => {
+      //   status.innerHTML = 'Upload failed!';
+      // });
+    }
+  </script>
+</body>
+</html>

@@ -15,4 +15,13 @@ Node version must be 18 or higher
 npm run start:dev 
 ```
 
-then open http://localhost:3000/index.html
+if you want to get file slice upload demo please open http://localhost:3000/index.html
+
+## Upload progress
+
+### use XMLHttpRequest
+if you want to get upload progress demo please open http://localhost:3000/upload-progress-by-xhr.html
+
+
+### use Fetch API
+if you want to get upload progress demo please open http://localhost:3000/upload-progress-by-fetch.html

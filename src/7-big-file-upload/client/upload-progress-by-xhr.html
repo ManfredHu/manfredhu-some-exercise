@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Upload Progress</title>
+  </head>
+  <body>
+    <input type="file" id="fileInput" />
+    <button onclick="uploadFile()">Upload File</button>
+    <progress id="uploadProgress" value="0" max="100"></progress>
+    <div id="status"></div>
+
+    <script>
+      function uploadFile() {
+        const fileInput = document.getElementById("fileInput");
+        const progress = document.getElementById("uploadProgress");
+        const status = document.getElementById("status");
+
+        const file = fileInput.files[0];
+        if (!file) {
+          alert("Please select a file.");
+          return;
+        }
+        
+        const formData = new FormData();
+        formData.set('name', file.name)
+        formData.append("files", file);
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:3000/upload", true);
+
+        // Progress event to track upload progress
+        xhr.upload.addEventListener("progress", function (e) {
+          console.log("progress", e);
+          // It's a flag(true) to indicating that has a length that can be calculated
+          if (e.lengthComputable) {
+            const percentComplete = (e.loaded / e.total) * 100;
+            progress.value = percentComplete;
+            status.innerHTML = `${percentComplete.toFixed(2)}% uploaded`;
+          }
+        });
+
+        // On successful upload
+        xhr.onload = function () {
+          if ([200, 201].includes(xhr.status)) {
+            status.innerHTML = "Upload complete!";
+          } else {
+            status.innerHTML = "Upload failed!";
+          }
+        };
+
+        // On error
+        xhr.onerror = function () {
+          status.innerHTML = "Error during upload.";
+        };
+
+        xhr.send(formData);
+      }
+    </script>
+  </body>
+</html>

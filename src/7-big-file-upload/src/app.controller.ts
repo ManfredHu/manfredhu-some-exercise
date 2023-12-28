@@ -4,12 +4,18 @@ import {
   Get,
   Post,
   Query,
+  Res,
+  UploadedFile,
   UploadedFiles,
   UseInterceptors,
 } from '@nestjs/common';
 import { FilesInterceptor } from '@nestjs/platform-express';
 import * as fs from 'fs';
 import { AppService } from './app.service';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
+import { Response } from 'express';
+
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
@@ -21,7 +27,7 @@ export class AppController {
 
   @Post('upload')
   @UseInterceptors(
-    // 'files' 是指定请求中文件的字段名，即上传文件的字段名。
+    // 'files' 是指定请求中文件的字段名，即上传文件的字段名。对应fieldname的value, FormData append的key
     // 20 是指定最大上传文件数量。
     // desc 指定文件上传的目标目录
     FilesInterceptor('files', 20, {
@@ -47,13 +53,21 @@ export class AppController {
     //   }
     // ]
 
-    const fileName = body.name.match(/(.+)\-\d+$/)[1];
-    const chunkDir = 'uploads/chunks_' + fileName;
+    const sliceIdxRst = body.name.match(/(.+)\-\d+$/);
+    if (!sliceIdxRst) {
+      // 普通文件上传
+      fs.cpSync(files[0].path, 'uploads/files/' + body.name);
+    } else {
+      // 分chunk上传
+      const fileName = sliceIdxRst[1];
+      const chunkDir = 'uploads/chunks_' + fileName;
 
-    if (!fs.existsSync(chunkDir)) {
-      fs.mkdirSync(chunkDir);
+      if (!fs.existsSync(chunkDir)) {
+        fs.mkdirSync(chunkDir);
+      }
+      fs.cpSync(files[0].path, chunkDir + '/' + body.name);
     }
-    fs.cpSync(files[0].path, chunkDir + '/' + body.name);
+    // 删除临时文件
     fs.rmSync(files[0].path);
   }
 
@@ -118,5 +132,26 @@ export class AppController {
         startPos += fs.statSync(filePath).size;
       });
     });
+  }
+
+  @Post('upload-by-fetch')
+  @UseInterceptors(
+    FileInterceptor('files', { // 注意这里是单个文件
+      storage: diskStorage({
+        destination: './uploads',
+        filename: (req, file, cb) => {
+          const fileName = `${Date.now()}-${file.originalname}`;
+          cb(null, fileName);
+        },
+      }),
+    }),
+  )
+  async uploadFile(@UploadedFile() file: Express.Multer.File, @Res() response: Response) {
+    response.setHeader('Content-Length', file.size);
+    response.json({
+      message: 'File uploaded successfully!',
+      filename: file.filename,
+      code: 0,
+    })
   }
 }
