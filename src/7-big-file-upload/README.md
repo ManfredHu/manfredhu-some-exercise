@@ -25,3 +25,8 @@ if you want to get upload progress demo please open http://localhost:3000/upload
 
 ### use Fetch API
 if you want to get upload progress demo please open http://localhost:3000/upload-progress-by-fetch.html
+
+
+## Video Upload
+
+if you want to get video upload demo please open http://localhost:3000/upload-video.html

@@ -38,8 +38,8 @@ export class AppController {
     @UploadedFiles() files: Array<Express.Multer.File>,
     @Body() body,
   ) {
-    // console.log('body', body); // body [Object: null prototype] { name: '007227_linda.jpeg-0' }
-    // console.log('files', files);
+    console.log('body', body); // body [Object: null prototype] { name: '007227_linda.jpeg-0' }
+    console.log('files', files);
     // [
     //   {
     //     fieldname: 'files',
