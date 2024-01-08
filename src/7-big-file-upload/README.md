@@ -23,10 +23,6 @@ if you want to get file slice upload demo please open http://localhost:3000/inde
 if you want to get upload progress demo please open http://localhost:3000/upload-progress-by-xhr.html
 
 
-### use Fetch API
-if you want to get upload progress demo please open http://localhost:3000/upload-progress-by-fetch.html
-
-
 ## Video Upload
 
 if you want to get video upload demo please open http://localhost:3000/upload-video.html
